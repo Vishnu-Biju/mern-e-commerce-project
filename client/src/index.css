@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+	box-sizing: inherit;
+}
+
+body {
+ 
+  margin: 0;
+  font-family:  'Roboto',Helvetica,-apple-system, 'Segoe UI', Arial, sans-serif, 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color:#ffffff  ;
+  
+}
+menu{
+  color: #000000;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+input {
+  display: flex;
+  border: 1px solid #ffffff;
+	background-color: #191919;
+  max-width: 40%px;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  color: #ffffff;
+  min-width: 200px;
+}
+input:focus
+{
+    
+    border: 1px solid #ffffff;
+    background-color: #191919;
+    outline-offset: 0px;
+    outline: none;
+    color: #ffffff;
+    max-width: 40%px;
+
+    min-width: 200px;
+   
+    
+}
+
+.no-outline:focus {
+  outline: none;
+}
+
+#main{
+  display: flex;
+	justify-content: center;
+	align-items: center;
+  padding: 10px;
+  color: #ffffff;
+	flex-direction: column;
+	font-family: 'Roboto', sans-serif;
+  background-color: #191919 ;
+  position: relative;
+  border-radius: 10px;
+  z-index: 1;
+  max-width: 50%;
+  margin: auto ;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  margin-top: 100px;
+  height: 60vh;
+  min-width: 300px;
+}
+
+#main h4{
+  color: rgb(255, 255, 255);
+}
+#main input{
+  margin-top: 35px;
+  min-width: 250px;
+  max-width: 50%;
+}
+#normal  {
+	border-radius: 20px;
+	border: 1px solid #ffffff;
+	background-color: #000000;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 15px 35px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+  margin-top: 10px;
+  width: 250px;
+  
+}
+#main p{
+  margin-left: 70px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-size: 13px;
+  color: rgb(20, 158, 227);
+}
+
+#main button:active {
+	transform: scale(0.95);
+}
+
+#fields{
+ padding: 10px;
+}
+
+
+.ant-menu-light .ant-menu-submenu-selected >.ant-menu-submenu-title {
+  color: blue;
+}

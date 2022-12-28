@@ -8,6 +8,7 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Home from './pages/Home';
 import Header from './components/nav/Header';
+import ChangePassword from "./pages/auth/forgotPassword"
 
 import {auth} from './pages/auth/firebase';
 import { useDispatch } from 'react-redux';
@@ -53,6 +54,7 @@ const App = ()=> {
       <Route  path="/" element ={<Home/>} />
       <Route  path="login"  element ={<Login/>} />
       <Route path="register"  element ={<Register/>} />
+      <Route path="/forgot/password"  element ={<ChangePassword/>} />
       
     </Routes>
     </>

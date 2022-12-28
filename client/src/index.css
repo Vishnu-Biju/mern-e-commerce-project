@@ -15,6 +15,9 @@ body {
   background-color:#ffffff  ;
   
 }
+ #danger p{
+  color: red;
+}
 menu{
   color: #000000;
 }
@@ -23,6 +26,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#main{
+  display: flex;
+	justify-content: center;
+	align-items: center;
+  padding: 10px;
+  color: #ffffff;
+	flex-direction: column;
+	font-family: 'Roboto', sans-serif;
+  background-color: #191919 ;
+  position: relative;
+  border-radius: 10px;
+  z-index: 1;
+  max-width: 50%;
+  margin: auto ;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  margin-top: 100px;
+  height: 70vh;
+  min-height:550px ;
+  min-width: 300px;
+  
+}
+
+#fields{
+  padding: 10px;
+
+  
+ }
 
 input {
   display: flex;
@@ -54,26 +86,7 @@ input:focus
   outline: none;
 }
 
-#main{
-  display: flex;
-	justify-content: center;
-	align-items: center;
-  padding: 10px;
-  color: #ffffff;
-	flex-direction: column;
-	font-family: 'Roboto', sans-serif;
-  background-color: #191919 ;
-  position: relative;
-  border-radius: 10px;
-  z-index: 1;
-  max-width: 50%;
-  margin: auto ;
-  text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  margin-top: 100px;
-  height: 60vh;
-  min-width: 300px;
-}
+
 
 #main h4{
   color: rgb(255, 255, 255);
@@ -96,22 +109,36 @@ input:focus
 	transition: transform 80ms ease-in;
   margin-top: 10px;
   width: 250px;
+  display: block;
   
 }
-#main p{
+#danger p{
   margin-left: 70px;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 0px;
+  margin-right: 18px;
+  font-size: 13px;
+  color: rgb(227, 20, 20);
+  display: block;
+}
+#blue p{
+  margin-left: 75px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+  margin-right: 0px;
   font-size: 13px;
   color: rgb(20, 158, 227);
+  display: block;
 }
+
 
 #main button:active {
 	transform: scale(0.95);
 }
 
-#fields{
- padding: 10px;
+#forgot{
+  color: #000000;
+
 }
 
 

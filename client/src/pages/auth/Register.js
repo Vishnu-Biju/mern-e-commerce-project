@@ -17,6 +17,15 @@ const Register= () => {
     // 👇️ navigate to /contacts
     navigate('/login');
   }
+
+
+  
+  const googleLogin = () => {
+    // using google
+  }
+
+
+
   const handleRegister = () => {
     
     createUserWithEmailAndPassword(auth, email, password)
@@ -45,18 +54,20 @@ const Register= () => {
   return (
 
     <div id = "main">
-      <h4> REGISTER</h4>
+      {loading ? <h4> Loading...</h4> : <h4> REGISTER </h4>}
       <div id="fields">
         <form>
           <input placeholder='email' type="email" style={{display:'block'}} onChange={(e) => setEmail(e.target.value)} />
            <input placeholder='password' type="password"  style={{display:'block'}} onChange={(e) => setPassword(e.target.value)} />
         </form>
   
-       </div>    
+          
        <button id="normal" disabled={loading} onClick={handleRegister} type="submit" >SignUp</button>
       
        <span><p>Have An Account?</p></span>
        <button id="normal" onClick={NavToLogin}>LOGIN</button>
+    </div> 
+      <button id="normal" onClick={googleLogin}>LOGIN with google</button>
     </div>
      
   )

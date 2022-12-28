@@ -1,8 +1,10 @@
 import React,{useState,useEffect} from "react";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -14,6 +16,14 @@ const ChangePassword = () => {
 
   const [email,setEmail] = useState('');
   const [loading,setLoading]=useState(false);
+  const navigate = useNavigate();
+  const {user} =  useSelector((state) => ({...state}));
+
+
+  //if the user is logged in then he will automatically redirect back to home
+  useEffect(() => {
+    if(user && user.token) navigate('/');
+  }, [user]);
 
   const handleSubmit = async (e) => {
       e.preventDefault();
@@ -27,6 +37,7 @@ const ChangePassword = () => {
       })
       .catch((error) => {
         const errorMessage = error.message;
+        toast.warning(errorMessage);
         // ..
       });
   }

@@ -1,10 +1,10 @@
-import React, {useState} from 'react'; 
+import React, {useState,useEffect} from 'react'; 
 import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword ,signInWithPopup} from "firebase/auth";
 import app from './firebase';
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
 
 const Login = () => {
@@ -14,7 +14,14 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading,setLoading] = useState(false);
   const provider = new GoogleAuthProvider();
+  const {user} =  useSelector((state) => ({...state}));
   
+
+  useEffect(() => {
+    if(user && user.token) navigate('/');
+  }, [user]);
+
+
   const NavToRegister = () => {
     // 👇️ navigate to /contacts
     navigate('/register');

@@ -11,8 +11,10 @@ import Header from './components/nav/Header';
 import ChangePassword from "./pages/auth/forgotPassword"
 import History from './pages/user/History';
 import { UserRoute } from "./components/routes/UserRoute";
+import { AdminRoute } from "./components/routes/AdminRoute";
 import Password from "./pages/user/Password";
 import Wishlist from "./pages/user/Wishlist";
+import AdminDashboard from './pages/admin/AdminDashboard';
 
 import {auth} from './pages/auth/firebase';
 import { useDispatch } from 'react-redux';
@@ -48,7 +50,7 @@ const App = ()=> {
   } );
   // clean up
   return() => unsubscribe();
- }, []);
+ }, [dispatch]);
 
   return (  
     <>
@@ -69,7 +71,8 @@ const App = ()=> {
       <Route  path="login"  element ={<Login/>} />
       <Route path="register"  element ={<Register/>} />
       <Route path="/forgot/password"  element ={<ChangePassword/>} />
-      <Route
+      
+      <Route  //protected routes
         path="/user/history"
         element={
           <UserRoute>
@@ -91,6 +94,14 @@ const App = ()=> {
           <UserRoute>
             <Wishlist/>
           </UserRoute>
+        }
+      />
+      <Route
+        path="/admin/dashboard"
+        element={
+          <AdminRoute>
+            <AdminDashboard/>
+          </AdminRoute>
         }
       />
       

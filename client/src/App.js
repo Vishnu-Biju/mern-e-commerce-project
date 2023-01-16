@@ -9,10 +9,15 @@ import Register from './pages/auth/Register';
 import Home from './pages/Home';
 import Header from './components/nav/Header';
 import ChangePassword from "./pages/auth/forgotPassword"
+import History from './pages/user/History';
+import { UserRoute } from "./components/routes/UserRoute";
+import Password from "./pages/user/Password";
+import Wishlist from "./pages/user/Wishlist";
 
 import {auth} from './pages/auth/firebase';
 import { useDispatch } from 'react-redux';
 import {currentUser} from "./functions/auth";
+
 
 const App = ()=> {
  const dispatch = useDispatch()
@@ -59,11 +64,35 @@ const App = ()=> {
         draggable
         pauseOnHover
         theme="dark"/>
-    <Routes>
+    <Routes> 
       <Route  path="/" element ={<Home/>} />
       <Route  path="login"  element ={<Login/>} />
       <Route path="register"  element ={<Register/>} />
       <Route path="/forgot/password"  element ={<ChangePassword/>} />
+      <Route
+        path="/user/history"
+        element={
+          <UserRoute>
+            <History />
+          </UserRoute>
+        }
+      />
+      <Route
+        path="/user/password"
+        element={
+          <UserRoute>
+            <Password />
+          </UserRoute>
+        }
+      />
+      <Route
+        path="/user/wishlist"
+        element={
+          <UserRoute>
+            <Wishlist/>
+          </UserRoute>
+        }
+      />
       
     </Routes>
     </>

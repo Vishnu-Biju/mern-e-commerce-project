@@ -19,6 +19,16 @@ body {
   color: red;
 }
 menu{
+  color: #3498ff;
+}
+
+#menu item:hover{
+  color: #000000;
+}
+#menu item:hover{
+  color: #000000;
+}
+#menu item:focus{
   color: #000000;
 }
 
@@ -107,7 +117,7 @@ input:focus
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
-  margin-top: 10px;
+  margin-top: 15px;
   width: 250px;
   display: block;
   
@@ -144,4 +154,127 @@ input:focus
 
 .ant-menu-light .ant-menu-submenu-selected >.ant-menu-submenu-title {
   color: blue;
+}
+
+
+.sideNavBar{
+  
+  color: #FFFFFF;
+  margin-left: 0px;
+  padding-left: 0px;
+  
+  background-color: #fffdfd;
+  
+  
+}
+
+#sideNav{
+  padding-left: 0px;
+  padding-right: 0px;
+  
+
+}
+
+.nav-item{
+  padding: 12px;
+ align-items: center;
+  border: 1px solid #191919;
+	background-color: #ffffff;
+	font-size: 12px;
+	font-weight: bold;
+  border-radius: 7px;
+  margin:10px;
+ 
+  
+}
+
+.nav-item:hover{
+  
+  background-color: #191919;
+  border: 1px solid #ffffff;
+  color: #000000;
+}
+.nav-item:focus{
+  background-color: #ffffff;
+  border: 1px solid #191919;
+ 
+  color: #000000;
+}
+
+
+
+.nav-link{
+  color: #191919;
+  align-items: center;
+}
+
+#outerNavBody{
+  border: 1px solid #000000;
+  border-left: 0px;
+  border-bottom: 0px;
+  padding-bottom: 50px;
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-top: 5px;
+  background-color:#F5FEFD;
+  height: 100vh;
+  
+  
+}
+
+#resetPass{
+  margin-top: 10px;
+  padding: 10px;
+}
+#resetPass input{
+  margin-top: 10px;
+  padding: 10px;
+  max-width: 700px;
+  min-width: 260px;
+}
+
+
+#resetPassInput{
+  
+  display: flex;
+
+  
+}
+/*
+#hero{
+  padding-left: 50px;
+  background-color: #E3E6F0;
+  border: 1px solid #ffffff;
+  border-left: 0px;
+  border-right: 0px;
+  padding-top: 50px;
+  height: 100vh;
+
+}
+*/
+.navLink {
+  
+  padding: 0.5rem 1rem;
+  color: #000000;
+  align-items: center;
+  text-decoration: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out
+}
+
+#normal1{
+  border-radius: 20px;
+	border: 1px solid #ffffff;
+	background-color: #000000;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 15px 35px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+  margin-top: 35px;
+  width: 260px;
+  
+  
+  
 }

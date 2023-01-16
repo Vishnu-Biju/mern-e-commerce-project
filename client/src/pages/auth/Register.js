@@ -82,7 +82,7 @@ const Register= () => {
       navigate("/");
     } catch (error) {
       toast.warning("something went wrong! check your email and password");
-      const errorCode = error.code;
+      
       
       setLoading(false);
       // ..

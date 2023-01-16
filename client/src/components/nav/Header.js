@@ -47,37 +47,38 @@ const Header = () => {
 
   return (
     <Menu
-      style={{ display: "block", backgroundColor: "#191919 ", color: "white" }}
+      style={{ display: "block", backgroundColor: "#3498ff ", color: "white" }}
       onClick={handleClick}
       mode="horizontal"
       selectedKeys={[current]}
     >
-      <Item key="home" icon={<AppstoreOutlined />}>
+      <Item  style={{  color: "white", backgroundColor: "#3498ff " }} 
+      key="home" icon={<AppstoreOutlined />}>
         <Link to="/">Home </Link>
       </Item>
       {user &&
         <SubMenu
         key="submenu"
-        style={{ backgroundColor: "#191919 ", color: "white",float: "right"  }}
+        style={{  color: "white",float: "right"  }}
         icon={<SettingOutlined />}
         title={user.email && user.email.split('@')[0]}
       >
         <Item
           key="setting:1"
-          style={{ backgroundColor: "#191919 ", color: "white" }}
+          style={{ backgroundColor: "#3498ff ", color: "white" }}
         >
           Options 1
         </Item>
         <Item
           key="setting:2"
-          style={{ backgroundColor: "#191919 ", color: "white" }}
+          style={{ backgroundColor: "#3498ff ", color: "white" }}
         >
           Options 2
         </Item>
         <Item
           icon={<LogoutOutlined />}
           onClick={logout}
-          style={{ backgroundColor: "#191919 ", color: "white" }}
+          style={{ backgroundColor: "#3498ff ", color: "white" }}
         >
           Logout
         </Item>

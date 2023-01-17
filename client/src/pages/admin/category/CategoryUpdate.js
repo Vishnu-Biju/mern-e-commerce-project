@@ -9,6 +9,8 @@ import {
 } from "../../../functions/category";
 import {  useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import CategoryForm from "../../../components/forms/CategoryForm";
+
 
 
 const CategoryUpdate = ( ) => {
@@ -57,20 +59,11 @@ const CategoryUpdate = ( ) => {
         </div>
       )}
       <div id="fields">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Category Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            autoFocus
-            required
+        <CategoryForm
+            handleSubmit={handleSubmit}
+            name={name}
+            setName={setName}
           />
-          <br />
-          <button id="normal" disabled={!name}>
-            submit
-          </button>
-        </form>
       </div>
     </div>
   );

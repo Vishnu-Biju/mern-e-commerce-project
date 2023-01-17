@@ -76,7 +76,7 @@ const Login = () => {
     
       // ...
     } catch (error) {
-      const errorCode = error.code;
+      
       toast.warning("check your password and email !");
       // const errorMessage = error.message;
       setLoading(false);

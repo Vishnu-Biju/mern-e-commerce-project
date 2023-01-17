@@ -20,8 +20,9 @@ body {
 }
 
 #root{
-
  
+  height: 100%;
+  width: 100%;
   padding: 0px;
   padding-left: -10px;
   background-color:#030c3e;
@@ -233,6 +234,11 @@ input:focus
   
 }
 
+#normal:focus{
+ background-color: rgb(28, 210, 28);
+ 
+}
+
 
 #category-create{
   
@@ -245,7 +251,7 @@ input:focus
 	font-family: 'Roboto', sans-serif;
   background-color: transparent;
   border-radius: 10px;
-  
+  padding-bottom: 700px;
   max-width: 100%;
   text-align: center;
   width: 100%;
@@ -257,6 +263,10 @@ input:focus
   margin-bottom: 0px;
 
  
+}
+.filter-pad{
+  background-color: #000000;
+  margin-top:19px;
 }
 #category-create input{
   margin-top: 35px;
@@ -280,10 +290,11 @@ input:focus
   padding-left: 10px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   margin-bottom: 180px;
+  padding-bottom: 100px;
 }
 .category-list h4{
- margin-bottom: 50px;
- margin-top: 20px;
+ margin-bottom: 80px;
+ margin-top:40px;
 
   
 }
@@ -317,10 +328,21 @@ input:focus
 }
 .button-Icon:hover{
  cursor:pointer;
- background-color: #cde516;
- transition: 3s linear;
+ background-color: #FFFF33;
+ transition: 0.2s linear;
 }
 
+
+.filter-pad{
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: 700;
+}
+.filter-pad:focus{
+  color: rgb(0, 0, 0);
+  background-color:#FFFF33;
+  transition: 0.6s linear;
+}
 
 
 

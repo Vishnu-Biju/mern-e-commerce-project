@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const categorySchema = new mongoose.Schema(
   {
   name:{
-    type: 'String',
+    type: String,
     trim: true, //to remove white spaces
     required: true,
     minlength:[2, "Too short"],
@@ -16,7 +16,7 @@ const categorySchema = new mongoose.Schema(
 
   },
   slug: {
-    type: 'String',
+    type: String,
     unique: true,
     upsert:true,
     lowercase: true,

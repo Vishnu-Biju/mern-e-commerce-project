@@ -91,7 +91,7 @@ const Register= () => {
   };
 
   return (
-
+  
     <div id = "main">
       {loading ? <h4> Loading...</h4> : <h4> REGISTER </h4>}
       <div id="fields">
@@ -108,6 +108,7 @@ const Register= () => {
     </div> 
       <button id="normal" onClick={googleLogin}>LOGIN with google</button>
     </div>
+    
      
   )
  }

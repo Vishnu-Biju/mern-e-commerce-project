@@ -9,7 +9,7 @@ import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
 
 // DATA FILE
-import { SidebarData } from "./SidebarData";
+import { SidebarData } from "./SidebarDataUser";
 
 // STYLES
 import "./Navbar.css";

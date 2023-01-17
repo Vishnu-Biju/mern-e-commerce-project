@@ -47,7 +47,7 @@ const Header = () => {
 
   return (
     <Menu
-      style={{ display: "block", backgroundColor: "#3498ff ", color: "white" }}
+      style={{ display: "block", backgroundColor: "#3498ff ", color: "white",position:"fixed",width:"100%" }}
       onClick={handleClick}
       mode="horizontal"
       selectedKeys={[current]}
@@ -63,18 +63,24 @@ const Header = () => {
         icon={<SettingOutlined />}
         title={user.email && user.email.split('@')[0]}
       >
+        {
+        user && user.role ==='subscriber' &&
         <Item
-          key="setting:1"
-          style={{ backgroundColor: "#3498ff ", color: "white" }}
-        >
-          Options 1
+        key="setting:1"
+          style={{ backgroundColor: "#3498ff ", color: "white" }}>
+          <Link to="/user/history">Dashboard</Link>
         </Item>
+       }
+
+        {
+        user && user.role ==='admin' &&
         <Item
-          key="setting:2"
-          style={{ backgroundColor: "#3498ff ", color: "white" }}
-        >
-          Options 2
+        key="setting:1"
+          style={{ backgroundColor: "#3498ff ", color: "white" }}>
+          <Link to="/admin/dashboard">Dashboard</Link>
         </Item>
+       }
+     
         <Item
           icon={<LogoutOutlined />}
           onClick={logout}

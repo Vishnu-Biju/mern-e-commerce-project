@@ -8,7 +8,6 @@ const {ObjectId} = mongoose.Schema;
 const subSchema = new mongoose.Schema(
   {
   name:{
-    unique: true,
     type: String,
     trim: true, //to remove white spaces
     required: true,
@@ -19,6 +18,7 @@ const subSchema = new mongoose.Schema(
   slug: {
     type: String,
     lowercase: true,
+    unique: true,
     index: true,
     
   },

@@ -37,7 +37,7 @@ const CategoryUpdate = ( ) => {
      updateCategory(slug,{ name }, user.token)
        .then((res) => {
         setLoading(false);
-       setName("");
+         setName("");
          toast.success(`"${res.data.name}" is updated `);
          navigate("/admin/category");
        })

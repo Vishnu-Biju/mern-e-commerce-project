@@ -1,0 +1,35 @@
+// SubCategory Schema
+
+
+const mongoose = require('mongoose');
+const {ObjectId} = mongoose.Schema;
+
+
+const subSchema = new mongoose.Schema(
+  {
+  name:{
+    unique: true,
+    type: String,
+    trim: true, //to remove white spaces
+    required: true,
+    minlength:[2, "Too short"],
+    maxlength:[32, "Too long"],
+
+  },
+  slug: {
+    type: String,
+    lowercase: true,
+    index: true,
+    
+  },
+  parent: {
+    type: ObjectId,
+    ref: "Category",
+    required:true,
+  },
+ 
+},
+{timestamps: true}
+);
+
+module.exports = mongoose.model("SubCategory", subSchema);

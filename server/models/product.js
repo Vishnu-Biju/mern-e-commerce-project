@@ -3,7 +3,7 @@ const {ObjectId} = mongoose.Schema;
 
 
 
-  const ProductSchema = new mongoose.Schema(
+  const productSchema = new mongoose.Schema(
     {
     title:{
       type: String,
@@ -33,32 +33,32 @@ const {ObjectId} = mongoose.Schema;
       trim:true,
       maxlength:32,
     },
-    category:{
+ /*    category:{
       type: ObjectId,
       ref:'Category',
       required:true,
       trim:true,
       maxlength:32,
-    },
-    subs: [{
+    }, */
+  /*   subs: [{
       type: ObjectId,
       ref:'Sub',
-    }],
+    }], */
     quantity:Number,
     sold:{
       type: Number,
       default:0,
     },
-    images:{ 
+   /*  images:{ 
       type: Array,
-    },
+    }, */
     shipping:{
       type: String,
       enum: ["yes","No"]
     },
     color:{
       type: String,
-      enum: ["Black","Brown","Silver","White","Black","Blue","Golden"]
+      enum: ["Black","Brown","Silver","White","Blue","Golden"]
     },
     brand:{
       type: String,
@@ -74,4 +74,4 @@ const {ObjectId} = mongoose.Schema;
   {timestamps:true}
   );
 
-  module.exports = mongoose.model("Product",ProductSchema);
+  module.exports = mongoose.model("Product",productSchema);

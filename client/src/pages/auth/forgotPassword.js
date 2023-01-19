@@ -50,7 +50,7 @@ const ChangePassword = () => {
         {loading? (<h4> Loading</h4>):(<div><h4>Forgot Password? </h4> <p>don't worry</p></div>)}
       <div id="fields">
       <form onSubmit={handleSubmit} >
-          <input type="email" placeholder="email"
+          <input type="email" placeholder="email" id="login-register"
           value={email} onChange={(e) => setEmail(e.target.value)}
           autoFocus
            />

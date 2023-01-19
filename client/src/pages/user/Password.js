@@ -41,11 +41,12 @@ const Password = () => {
   const passwordUpdateForm = () => (
     <div id='fields'>
       <form onSubmit={handleSubmit}>
-      <div className='form-group' id='resetPass'>
+      <div id='resetPass'>
          
         
         <input 
           type="password" 
+          className='normal'
           onChange={(e) => setPassword(e.target.value)}
           id="resetPassInput"
           placeholder="Enter new password" 

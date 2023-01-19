@@ -19,6 +19,7 @@ import CategoryCreate from "./pages/admin/category/CategoryCreate";
 import CategoryUpdate from "./pages/admin/category/CategoryUpdate";
 import SubCreate from "./pages/admin/Sub/SubCreate";
 import SubUpdate from './pages/admin/Sub/SubUpdate';
+import ProductCreate from './pages/admin/product/ProductCreate';
 
 import {auth} from './pages/auth/firebase';
 import { useDispatch } from 'react-redux';
@@ -139,6 +140,14 @@ const App = ()=> {
         element={
           <AdminRoute>
             <SubUpdate/>
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="/admin/product"
+        element={
+          <AdminRoute>
+            <ProductCreate/>
           </AdminRoute>
         }
       />

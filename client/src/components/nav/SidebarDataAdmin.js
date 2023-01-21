@@ -51,7 +51,7 @@ export const SidebarData = [
   },
   {
     title: "password",
-    path: "/user/password",
+    path: "/admin/password",
     icon: <IoIcons.IoMdFingerPrint />,
     cName: "nav-text"
     

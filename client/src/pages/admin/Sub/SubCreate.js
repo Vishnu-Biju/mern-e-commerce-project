@@ -92,7 +92,7 @@ const SubCreate = () => {
 {/*select category*/}
 
       <div className="drop">
-          <label style={{marginBottom:"20px",fontWeight:"600"}}>CATEGORY</label>
+          <label style={{marginBottom:"20px",fontWeight:"600"}}>PARENT-CATEGORY</label>
           <select
             name="category"
             className="select"

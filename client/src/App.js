@@ -13,6 +13,7 @@ import History from './pages/user/History';
 import { UserRoute } from "./components/routes/UserRoute";
 import { AdminRoute } from "./components/routes/AdminRoute";
 import Password from "./pages/user/Password";
+import AdminPassword from "./pages/admin/Password";
 import Wishlist from "./pages/user/Wishlist";
 import AdminDashboard from './pages/admin/AdminDashboard';
 import CategoryCreate from "./pages/admin/category/CategoryCreate";
@@ -115,6 +116,14 @@ const App = ()=> {
         element={
           <AdminRoute>
             <CategoryCreate/>
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="/admin/password"
+        element={
+          <AdminRoute>
+            <AdminPassword/>
           </AdminRoute>
         }
       />

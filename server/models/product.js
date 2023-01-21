@@ -33,17 +33,17 @@ const {ObjectId} = mongoose.Schema;
       trim:true,
       maxlength:32,
     },
- /*    category:{
+     category:{
       type: ObjectId,
       ref:'Category',
       required:true,
       trim:true,
       maxlength:32,
-    }, */
-  /*   subs: [{
+    }, 
+     subs: [{
       type: ObjectId,
       ref:'Sub',
-    }], */
+    }], 
     quantity:Number,
     sold:{
       type: Number,
@@ -54,7 +54,7 @@ const {ObjectId} = mongoose.Schema;
     }, */
     shipping:{
       type: String,
-      enum: ["yes","No"]
+      enum: ["Yes","No"]
     },
     color:{
       type: String,

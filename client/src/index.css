@@ -429,6 +429,14 @@ code {
   border-radius: 10px;
   color: #FFFFFF;
 }
+ Option{
+  background-color: #030c3e;
+  padding: 20px;
+  margin-bottom: 40px;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  color: #FFFFFF;
+}
 .form-group:hover{
   box-shadow: 0 0 20px 0 rgb(194, 233, 51), 0 5px 5px 0 rgb(115, 251, 23);
   transition: 0.2s linear;
@@ -453,6 +461,27 @@ code {
   box-shadow: 0 0 20px 0 rgb(194, 233, 51), 0 5px 5px 0 rgb(115, 251, 23);
   transition: 0.2s linear;
 }
+
+.ant-select-selector{
+  background-color: #030c3e;
+  color: white;
+  margin-left: 10px;
+  width: 100%;
+ 
+}
+.ant-select-selection-overflow{
+  background-color: #ffffff;
+  color: white;
+  border: #000000;
+  
+}
+
+.ant-select-selection-overflow-item {
+  background-color: #030c3e;
+  color: rgb(255, 255, 255);
+  
+}
+
 
 
 

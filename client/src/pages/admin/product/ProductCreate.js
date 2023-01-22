@@ -4,10 +4,9 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { createProduct } from "../../../functions/product";
 import ProductCreateForm from "../../../components/forms/ProductCreateForm";
-import {
-  getCategories,
-  getCategorySubs
-} from "../../../functions/category";
+import { getCategories, getCategorySubs } from "../../../functions/category";
+import FileUpload from "../../../components/forms/FileUpload";
+import {LoadingOutlined } from '@ant-design/icons';
 
 const initialState = {
   title: "",
@@ -19,7 +18,7 @@ const initialState = {
   shipping: ["Yes", "No"],
   quantity: "",
   images: [],
-  colors:  ["Black","Brown","Silver","White","Blue","Golden"],
+  colors: ["Black", "Brown", "Silver", "White", "Blue", "Golden"],
   brands: ["Apple", "Lenovo", "HP", "MSI", "Samsung", "Microsoft", "Asus"],
   color: "",
   brand: "",
@@ -29,21 +28,19 @@ const ProductCreate = () => {
   const [values, setValues] = useState(initialState);
   const [subOptions, setSubOptions] = useState([]);
   const [showSubs, setShowSub] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   //redux
   const { user } = useSelector((state) => ({ ...state }));
 
   useEffect(() => {
     //when mounting and unmounting the ui refreshes
-     loadCategory();
-    
+    loadCategory();
   }, []);
 
   const loadCategory = () =>
-    getCategories().then((c) => setValues({...values, categories: c.data}));
-  
- 
-  
+    getCategories().then((c) => setValues({ ...values, categories: c.data }));
+
   const handleSubmit = (e) => {
     e.preventDefault();
     createProduct(values, user.token)
@@ -67,13 +64,12 @@ const ProductCreate = () => {
     e.preventDefault();
     console.log("CLICKED CATEGORY", e.target.value);
     setValues({ ...values, subs: [], [e.target.name]: e.target.value });
-    getCategorySubs(e.target.value)
-    .then((res) => {
-      console.log("SUB OPTIONS ON CATEGORY CLICK", res)
-      setSubOptions(res.data)
-  });
-  setShowSub(true);
-  }
+    getCategorySubs(e.target.value).then((res) => {
+      console.log("SUB OPTIONS ON CATEGORY CLICK", res);
+      setSubOptions(res.data);
+    });
+    setShowSub(true);
+  };
 
   return (
     <div className="container-fluid">
@@ -82,11 +78,22 @@ const ProductCreate = () => {
           <AdminNav />
         </div>
         <div className="col-md-10" id="hero">
-          <h4 className="h4ofproduct">PRODUCT CREATE</h4>
+          {loading ? (<LoadingOutlined  className="text-white h1 center"/> 
+          ):
+          (<h4 className="h4ofproduct">PRODUCT CREATE</h4>)}
+
           <br />
           <br />
           <br />
-      
+         
+          <div className="">
+            <FileUpload
+              values={values}
+              setValues={setValues}
+              setLoading={setLoading}
+            />
+          </div>
+
           <ProductCreateForm
             handleSubmit={handleSubmit}
             handleChange={handleChange}
@@ -94,7 +101,7 @@ const ProductCreate = () => {
             values={values}
             handleCategoryChange={handleCategoryChange}
             subOptions={subOptions}
-            showSubs={showSubs} 
+            showSubs={showSubs}
           />
         </div>
       </div>

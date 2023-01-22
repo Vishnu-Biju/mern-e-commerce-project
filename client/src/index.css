@@ -428,6 +428,7 @@ code {
   border: 1px solid #ffffff;
   border-radius: 10px;
   color: #FFFFFF;
+ 
 }
  Option{
   background-color: #030c3e;
@@ -441,6 +442,7 @@ code {
   box-shadow: 0 0 20px 0 rgb(194, 233, 51), 0 5px 5px 0 rgb(115, 251, 23);
   transition: 0.2s linear;
 }
+
 #submit{
   border-radius: 20px;
   border: 1px solid #ffffff;
@@ -481,7 +483,49 @@ code {
   color: rgb(255, 255, 255);
   
 }
+.form-group img{
+  z-index: 1;
+}
+ .avatar{
+
+  z-index: 1;
+  float: none;
+  margin: 10px 10px;
+  padding: 25px;
+  margin-bottom: 50px;
+ 
+
+ 
+
+}
 
 
+.css-e53awj-MuiStack-root{
+  margin-bottom: 50px;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  width: 150px;
+  margin-right: none;
+}
 
 
+.ant-badge{
+ 
+ z-index: 1;
+  margin-right: 50px;
+} 
+
+.images{
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.ant-menu-overflow{
+  z-index: 9999;
+
+}
+
+    

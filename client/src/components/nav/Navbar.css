@@ -13,6 +13,7 @@
   margin-left: 0px;
   justify-content: start;
   height: 100%;
+ 
 }
 
 .menu-bars {
@@ -33,6 +34,7 @@
   top: 0;
   left: -100%;
   transition: 850ms;
+  z-index: 666;
 }
 
 .nav-menu.active {

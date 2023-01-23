@@ -1,60 +1,54 @@
-const mongoose = require('mongoose');
-const {ObjectId} = mongoose.Schema;
+const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema;
 
-
-
-  const productSchema = new mongoose.Schema(
-    {
-    title:{
+const productSchema = new mongoose.Schema(
+  {
+    title: {
       type: String,
-      trim:true,
+      trim: true,
       required: true,
-      maxlength:32,
-      text:true,
-
+      maxlength: 32,
+      text: true,
     },
-    slug:{
+    slug: {
       type: String,
-      unique:true,
-      lowercase:true,
-      index:true,
-
+      unique: true,
+      lowercase: true,
+      index: true,
     },
-    description:{
+    description: {
       type: String,
-      required:true,
-      maxlength:2000,
-      text:true,
-
+      required: true,
+      maxlength: 2000,
+      text: true,
     },
-    price:{
+    price: {
       type: Number,
-      required:true,
-      trim:true,
-      maxlength:32,
+      required: true,
+      trim: true,
+      maxlength: 32,
     },
-     category:{
+    category: {
       type: ObjectId,
-      ref:'Category',
-      required:true,
-      trim:true,
-      maxlength:32,
-    }, 
-     subs: [{
-      type: ObjectId,
-      ref:'Sub',
-    }], 
-    quantity:Number,
-    sold:{
+      ref: "Category",
+    },
+    subs: [
+      {
+        type: ObjectId,
+        ref: "Sub",
+      },
+    ],
+    quantity: Number,
+    sold: {
       type: Number,
-      default:0,
+      default: 0,
     },
-    images:{ 
+    images: {
       type: Array,
     },
-    shipping:{
+    shipping: {
       type: String,
-      enum: ["Yes","No"]
+      enum: ["Yes", "No"],
     },
     color:{
       type: String,

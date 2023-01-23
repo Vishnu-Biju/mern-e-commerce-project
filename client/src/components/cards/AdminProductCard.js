@@ -12,7 +12,7 @@ const AdminProductCard = ({ product }) => {
         cover={
           <img
             src={images && images.length ? images[0].url : ""}
-            style={{ height: "150px", objectFit: "cover" }}
+            style={{ height: "290px", objectFit: "cover" }}
             className="p-2"
           />
         }

@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import { Routes , Route} from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer} from 'react-toastify';
+import { useSelector } from "react-redux";
 
 
 import Login from './pages/auth/Login';
@@ -21,7 +22,9 @@ import CategoryUpdate from "./pages/admin/category/CategoryUpdate";
 import SubCreate from "./pages/admin/Sub/SubCreate";
 import SubUpdate from './pages/admin/Sub/SubUpdate';
 import ProductCreate from './pages/admin/product/ProductCreate';
+import ProductUpdate from './pages/admin/product/ProductUpdate';
 import AllProducts from './pages/admin/product/AllProduct';
+
 
 
 import {auth} from './pages/auth/firebase';
@@ -32,7 +35,8 @@ import {currentUser} from "./functions/auth";
 
 const App = ()=> {
  const dispatch = useDispatch()
- 
+//  const { user } = useSelector((state) => ({ ...state }));
+//  console.log("USER",user.role);
 
  //to check firebase auth state
  useEffect(()=> {
@@ -63,6 +67,7 @@ const App = ()=> {
 
   return (  
     <>
+    
     <Header/>
     <ToastContainer
         position="top-right"
@@ -167,6 +172,15 @@ const App = ()=> {
         element={
           <AdminRoute>
             <AllProducts/>
+          </AdminRoute>
+        }
+      />
+      
+      <Route
+        path="/admin/product/:slug"
+        element={
+          <AdminRoute>
+            <ProductUpdate/>
           </AdminRoute>
         }
       />

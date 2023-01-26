@@ -57,7 +57,7 @@ const AllProducts = () => {
           {loading ? <h4>LOADING...</h4> : <h4>ALL PRODUCTS</h4>}
           <div className="row">
             {products.map((product) => (
-              <div className="col-md-4 pb-3" id="card">
+              <div className="col-lg-3  col-md-6 pb-5" id="card">
                 <AdminProductCard
                   product={product}
                   key={product._id}

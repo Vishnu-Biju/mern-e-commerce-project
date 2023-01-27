@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import AdminNav from "../../../components/nav/AdminNav";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
-import { getProduct } from "../../../functions/product";
+import { getProduct, updateProduct } from "../../../functions/product";
 import { getCategories, getCategorySubs } from "../../../functions/category";
 import FileUpload from "../../../components/forms/FileUpload";
 import {LoadingOutlined } from '@ant-design/icons';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ProductUpdateForm from "../../../components/forms/ProductUpdateForm";
 
 const initialState = {
@@ -34,7 +34,7 @@ const ProductUpdate = () => {
   const [ArrayOfSubs, setArrayOfSubs] = useState([]);
   const [selectedCategory,setSelectedCategory] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const Navigate = useNavigate();
   
   //redux
   const { user } = useSelector((state) => ({ ...state }));
@@ -72,10 +72,27 @@ const ProductUpdate = () => {
     console.log('CATEGORY ON UPDATE',c.data)
     setCategories(c.data)});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    //
-  };
+
+
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      setLoading(true);
+  
+      values.subs = ArrayOfSubs ;
+      values.category = selectedCategory ? selectedCategory : values.category;
+  
+      updateProduct(slug, values, user.token)
+        .then((res) => {
+          setLoading(false);
+          toast.success(`"${res.data.title}" is updated`);
+          Navigate('/admin/products')
+        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+          toast.error(err.response.data.err);
+        });
+    };
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -109,8 +126,10 @@ const ProductUpdate = () => {
           <AdminNav />
         </div>
         <div className="col-md-10" id="hero">
-           
-          <h4 >PRODUCT UPDATE</h4>
+        {loading ? (<LoadingOutlined  className="text-white h1 center"/> 
+          ):
+          (<h4 >PRODUCT UPDATE</h4>)}
+          
            
 
           <div className="">

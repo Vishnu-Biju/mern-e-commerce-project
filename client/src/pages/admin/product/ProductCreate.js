@@ -80,7 +80,7 @@ const ProductCreate = () => {
         <div className="col-md-10" id="hero">
           {loading ? (<LoadingOutlined  className="text-white h1 center"/> 
           ):
-          (<h4 className="h4ofproduct">PRODUCT CREATE</h4>)}
+          (<h4  id="headers">PRODUCT CREATE</h4>)}
 
           <br />
           <br />

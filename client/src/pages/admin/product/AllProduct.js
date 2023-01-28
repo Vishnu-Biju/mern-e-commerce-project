@@ -54,8 +54,8 @@ const AllProducts = () => {
           <br />
           <br />
 
-          {loading ? <h4>LOADING...</h4> : <h4>ALL PRODUCTS</h4>}
-          <div className="row">
+          {loading ? <h4 >LOADING...</h4> : <h4 id="headers">ALL PRODUCTS</h4>}
+          <div className="Row">
             {products.map((product) => (
               <div className="col-lg-3  col-md-6 pb-5" id="card">
                 <AdminProductCard

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect,useState} from 'react';
 import { Routes , Route} from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer} from 'react-toastify';
@@ -35,18 +35,29 @@ import {currentUser} from "./functions/auth";
 
 const App = ()=> {
  const dispatch = useDispatch()
-//  const { user } = useSelector((state) => ({ ...state }));
-//  console.log("USER",user.role);
+ const [role,setRole] = useState(false);
+ 
+ const { user } = useSelector((state) => ({ ...state}));
+
+
+
+
+
+
+
 
  //to check firebase auth state
  useEffect(()=> {
+
   const unsubscribe =  auth.onAuthStateChanged(async (user)=> {
     if(user) {
       const idTokenResult = await user.getIdTokenResult();
         console.log("user",user)
         currentUser(idTokenResult.token)
         .then((res) => {
-          
+           if(res.data.role==="admin") {
+            setRole(true)
+           }
           dispatch({
             type: "LOGGED_IN_USER",
             payload: {
@@ -56,18 +67,33 @@ const App = ()=> {
               role:res.data.role,
               _id:res.data._id,
             },
+           
           });
+         
         })
         .catch(err => console.log(err));
     }
   } );
+
+
+  // const backGround = () => {
+  //   if(role === "true"){
+  //     backGround = "dark";
+  //   }else {
+  //     backGround = "light";
+  //   }
+  // };
+
+  
+
+
   // clean up
   return() => unsubscribe();
  }, [dispatch]);
 
   return (  
-    <>
-    
+  <>
+ 
     <Header/>
     <ToastContainer
         position="top-right"

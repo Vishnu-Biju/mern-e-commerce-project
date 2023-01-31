@@ -554,7 +554,7 @@ code {
 }
 
 .ant-card{
-  background-color:#f3f1f1 ;
+  background-color:#ffffff ;
   /*f6ff00*/
   
  ;
@@ -564,15 +564,11 @@ code {
 
 .ant-card-body{
 min-height: 150px;
-color: white;
+
 }
 
 .ant-card-cover{
  border-radius: 10px;
-}
-.ant-card-meta-title{
-  color: white;
-  
 }
 
 .ant-card:hover{
@@ -646,3 +642,97 @@ color: white;
   font-weight: 700;
 }
 
+
+
+.Row2{
+  display: flex;
+  margin-top: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-radius: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color:#ffffff;
+ 
+}
+.Row3{
+  display: flex;
+  margin-top: 20px;
+  padding-top: 18px;
+  padding-bottom: 50px;
+  border-radius: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color:#ffffff;
+ 
+}
+
+.slider img{
+  height: 500px;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 1px solid #ffffff;
+}
+
+.carousel-slider{
+  border: 1px solid #000000;
+  border-radius: 20px;
+}
+.carousel-slider:hover{
+  box-shadow: 0 0 10px 0 rgb(44, 43, 43), 0 5px 5px 0 rgb(226, 226, 226);
+  transition: 0.6s ease-in-out;
+
+}
+
+#productinfo{
+  text-align: center;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  display: block;
+  width: 100%;
+}
+
+.ant-tabs-content {
+ background-color:#ffffff;
+ color: rgb(0, 0, 0);
+ font-weight: 600;
+}
+
+.ant-tabs-tab{
+  background-color: rgb(0, 0, 0);
+  padding: 10px;
+  width: 100%;
+}
+
+.ant-tabs-content-top{
+ color: #000000;
+}
+.ant-tabs-nav-list{
+  background-color: rgb(255, 255, 255);
+  color: #053bff;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+#rating{
+  font-weight: 800;
+  font-size: 20px;
+  color: white;
+  padding-bottom: 6px;
+  
+}
+.star{
+  fill: gold;
+}
+
+.ratingss{
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.Row4{
+  display: block;
+
+}

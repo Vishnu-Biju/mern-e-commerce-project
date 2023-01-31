@@ -24,6 +24,7 @@ import SubUpdate from './pages/admin/Sub/SubUpdate';
 import ProductCreate from './pages/admin/product/ProductCreate';
 import ProductUpdate from './pages/admin/product/ProductUpdate';
 import AllProducts from './pages/admin/product/AllProduct';
+import Product from './pages/Product';
 
 
 
@@ -35,15 +36,6 @@ import {currentUser} from "./functions/auth";
 
 const App = ()=> {
  const dispatch = useDispatch()
- const [role,setRole] = useState(false);
- 
- const { user } = useSelector((state) => ({ ...state}));
-
-
-
-
-
-
 
 
  //to check firebase auth state
@@ -55,16 +47,14 @@ const App = ()=> {
         console.log("user",user)
         currentUser(idTokenResult.token)
         .then((res) => {
-           if(res.data.role==="admin") {
-            setRole(true)
-           }
+         
           dispatch({
             type: "LOGGED_IN_USER",
             payload: {
               name: res.data.name,
               email: res.data.email,
               token: idTokenResult.token,
-              role:res.data.role,
+               role:res.data.role,
               _id:res.data._id,
             },
            
@@ -210,7 +200,7 @@ const App = ()=> {
           </AdminRoute>
         }
       />
-      
+      <Route  path="/product/:slug" element ={<Product/>} />
     </Routes>
     </>
     

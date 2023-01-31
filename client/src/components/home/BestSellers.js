@@ -53,7 +53,7 @@ const BestSellers = () => {
         >
           <Pagination
             current={page}
-            total={(productsCount / 3) * 10}
+            total={((productsCount/10) * 10)+1}
             onChange={(value) => setPage(value)}
           />
         </nav>

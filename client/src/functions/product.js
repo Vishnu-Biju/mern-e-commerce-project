@@ -40,3 +40,22 @@ export const updateProduct = async (slug, product, authtoken) =>
   
 export const getProductsCount = async () =>
   await axios.get(`${process.env.REACT_APP_API}/products/total`);
+
+//ratongs
+
+export const productStar = async (productId, star, authtoken) =>
+
+  await axios.put(
+    `${process.env.REACT_APP_API}/product/star/${productId}`,
+    { star },
+    {
+      headers: {
+        authtoken,
+      },
+    }
+  );
+
+
+// related products
+  export const getRelated = async (productId) =>
+  await axios.get(`${process.env.REACT_APP_API}/product/related/${productId}`);

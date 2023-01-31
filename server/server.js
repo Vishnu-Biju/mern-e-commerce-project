@@ -24,8 +24,9 @@ mongoose
 
 // middlewares
   app.use(morgan("dev"));
-  app.use(bodyParser.json());
-  app.use(express.json({limit: '50mb'}));
+  app.use(bodyParser.json({ limit: '10mb' }));
+  app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+
 
   
   app.use(cors());
@@ -42,3 +43,4 @@ mongoose
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => console.log(`server is running on port ${port}`));
+

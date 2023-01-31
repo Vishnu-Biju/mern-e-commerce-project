@@ -25,6 +25,7 @@ const Login = () => {
 
 
   const { user } = useSelector((state) => ({ ...state }));
+ 
 
 
 
@@ -41,12 +42,19 @@ const Login = () => {
   let dispatch = useDispatch();
 
   const roleBasedRedirect = (res) => {
+    const storedValue = localStorage.getItem('RatingModalRedirect');
+    // check if there is an intended redirect available
+    if (storedValue) {
+      navigate(storedValue);
+      localStorage.removeItem('RatingModalRedirect');
+    } else {
     if(res.data.role === "admin"){
       navigate("/admin/dashboard");
     }else {
       navigate("/user/history");
     }
   }
+ }
 
   const handleLogin = async (e) => {
     e.preventDefault();

@@ -12,8 +12,8 @@ const FileUpload = ({ values, setValues, setLoading }) => {
 
   const fileUploadAndResize = (e) => {
     // console.log(e.target.files);
-    //resize-   :react-mage-file-resizer-npm
-    let files = e.target.files;
+    // resize
+    let files = e.target.files; // 3
     let allUploadedFiles = values.images;
 
     if (files) {
@@ -39,9 +39,10 @@ const FileUpload = ({ values, setValues, setLoading }) => {
                 }
               )
               .then((res) => {
-                console.log(`IMAGE UPLOAD RES DATA`, res);
+                console.log("IMAGE UPLOAD RES DATA", res);
                 setLoading(false);
                 allUploadedFiles.push(res.data);
+
                 setValues({ ...values, images: allUploadedFiles });
               })
               .catch((err) => {
@@ -52,16 +53,17 @@ const FileUpload = ({ values, setValues, setLoading }) => {
           "base64"
         );
       }
-      //send back to server to upload to cloudinary
-      //set url to image[] array in the parent compoent state-product create
     }
+    // send back to server to upload to cloudinary
+    // set url to images[] in the parent component state - ProductCreate
   };
+
   const handleImageRemove = (public_id) => {
     setLoading(true);
     // console.log("remove image", public_id);
     axios
       .post(
-        `${process.env.REACT_APP_API}/removeimages`,
+        `${process.env.REACT_APP_API}/removeimage`,
         { public_id },
         {
           headers: {

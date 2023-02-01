@@ -8,7 +8,7 @@ const LoadingCart = ({count}) => {
 
     for(let i= 0; i <count; i++) {
       totalCards.push(
-        <Card className="col-lg-3  col-md-5 pb-3 m-3">
+        <Card className=" col-lg-3 col-md-5 p-3 m-1 ">
           <Skeleton active></Skeleton>
         </Card>
       );

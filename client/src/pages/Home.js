@@ -1,8 +1,9 @@
 import React from "react";
 import Jumbotron from "../components/cards/jumbotron";
 import NewArrivals from "../components/home/NewArrivals";
-import BestSellers from "../components/home/BestSellers"
-
+import BestSellers from "../components/home/BestSellers";
+import CategoryList from "../components/category/CategoryList";
+import SubList from "../components/sub/SubList";
 
 const Home = () => {
 
@@ -27,6 +28,23 @@ const Home = () => {
       </h4>
 
       <BestSellers/>
+      <br/>
+      <br/>
+
+
+      <h4 className="jumbow">
+        Category List
+      </h4>
+
+      <CategoryList/>
+      <br/>
+      <br/>
+
+      <h4 className="jumbow">
+        SubCategory List
+      </h4>
+
+      <SubList/>
       <br/>
       <br/>
     </div>

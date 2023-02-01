@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import Search from "../forms/Search"
 
 const { SubMenu, Item } = Menu;
 
@@ -47,19 +48,22 @@ const Header = () => {
 
   return (
     <Menu
-      style={{ display: "block", backgroundColor: "#3498ff ", color: "white",position:"fixed",width:"100%" }}
+      style={{display:"inline-block",  backgroundColor: "#f7f7f7", color: "black",position:"fixed",width:"100%" ,paddingTop:"10px"}}
       onClick={handleClick}
       mode="horizontal"
       selectedKeys={[current]}
     >
-      <Item  style={{  color: "white", backgroundColor: "#3498ff " }} 
+      <Item  style={{  color: "#088178", backgroundColor: "#f7f7f7" ,fontWeight:"700",fontSize:"16px"}} 
       key="home" icon={<AppstoreOutlined />}>
         <Link to="/">Home </Link>
+        
       </Item>
+
+     
       {user &&
         <SubMenu
         key="submenu"
-        style={{  color: "white",float: "right"  }}
+        style={{  color: "#088178",float: "right" ,fontWeight:"700",fontSize:"16px" }}
         icon={<SettingOutlined />}
         title={user.email && user.email.split('@')[0]}
       >
@@ -67,7 +71,7 @@ const Header = () => {
         user && user.role ==='subscriber' &&
         <Item
         key="setting:1"
-          style={{ backgroundColor: "#3498ff ", color: "white" }}>
+          style={{  color: "#088178", backgroundColor: "#f7f7f7" ,fontWeight:"700",fontSize:"16px",marginTop: "50px" }}>
           <Link to="/user/history">Dashboard</Link>
         </Item>
        }
@@ -76,7 +80,7 @@ const Header = () => {
         user && user.role ==='admin' &&
         <Item
         key="setting:1"
-          style={{ backgroundColor: "#3498ff ", color: "white" }}>
+          style={{  color: "#088178", backgroundColor: "#f7f7f7" ,fontWeight:"700",fontSize:"16px" }}>
           <Link to="/admin/dashboard">Dashboard</Link>
         </Item>
        }
@@ -84,13 +88,17 @@ const Header = () => {
         <Item
           icon={<LogoutOutlined />}
           onClick={logout}
-          style={{ backgroundColor: "#3498ff ", color: "white" }}
+          style={{  color: "#088178", backgroundColor: "#f7f7f7",fontWeight:"700",fontSize:"16px"  }}
         >
           Logout
         </Item>
       </SubMenu>
       }
       
+      
+      <span key="search" style={{ float: "right"}} >
+          <Search/>
+        </span>
 
       {!user && (
         <Item
@@ -107,6 +115,7 @@ const Header = () => {
           <Link to="/Login">Login</Link>
         </Item>
       )}
+     
     </Menu>
   );
 };

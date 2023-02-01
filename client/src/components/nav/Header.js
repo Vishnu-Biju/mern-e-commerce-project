@@ -6,6 +6,7 @@ import {
   LogoutOutlined,
   UserOutlined,
   UserAddOutlined,
+  ShoppingOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
@@ -58,6 +59,11 @@ const Header = () => {
         <Link to="/">Home </Link>
         
       </Item>
+        <Item  style={{  color: "#088178", backgroundColor: "#f7f7f7" ,fontWeight:"700",fontSize:"16px"}} 
+        key="shop" icon={<ShoppingOutlined />}>
+          <Link to="/shop">Shop </Link>
+          
+        </Item>
 
      
       {user &&

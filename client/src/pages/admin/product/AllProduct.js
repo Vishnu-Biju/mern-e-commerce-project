@@ -44,7 +44,7 @@ const AllProducts = () => {
   };
   
   return (
-    <div className="container-fluid">
+    <div className="container-fluid " >
       <div className="row">
         <div id="sideNav" className="col-md-2">
           <AdminNav />

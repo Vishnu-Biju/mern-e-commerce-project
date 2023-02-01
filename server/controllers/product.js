@@ -171,6 +171,7 @@ exports.listRelated = async (req, res) => {
 // SERACH / FILTER
 
 //handleQuuery fuction implemented to handle diffent type of inputs like,text,star,price,brand..etc
+
 const handleQuery = async (req, res, query) => {
   const products = await Product.find({ $text: { $search: query } })
     .populate("category", "_id name")
@@ -198,8 +199,21 @@ const handlePrice = async (req, res, price) => {
   }
 };
 
+const handleCategory = async (req, res, category) => {
+  try {
+    let products = await Product.find({ category })
+      .populate("category", "_id name")
+      .populate("subs", "_id name")
+      .exec();
+
+    res.json(products);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 exports.searchFilters = async (req, res) => {
-  const { query, price } = req.body;
+  const { query, price, category } = req.body;
 
   if (query) {
     console.log("query --->", query);
@@ -211,8 +225,12 @@ exports.searchFilters = async (req, res) => {
     console.log("price ---> ", price);
     await handlePrice(req, res, price);
   }
-};
 
+  if (category) {
+    console.log("category ---> ", category);
+    await handleCategory(req, res, category);
+  }
+};
 
 
 

@@ -14,7 +14,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
  /* For browsers that do not support gradients */
   min-height: 100vh;
-  background-image: linear-gradient(to bottom right, #0b0e20, #0c2da3);
+  background-image: linear-gradient(to bottom right, #ebfff3, #0c2da3);
   
 }
 
@@ -23,7 +23,7 @@ body {
 }
 
 
-menu{
+ menu{
   color: #3498ff;
   position: fixed;
   z-index: 9999;
@@ -31,7 +31,14 @@ menu{
   
 }
 
-
+.ant-menu-title-content{
+  margin: 0px;
+ 
+}
+#searchbar{
+  display: flex;
+}
+/*
 #menu item:hover{
   color: #d2f608;
 }
@@ -40,7 +47,7 @@ menu{
 }
 #menu item:focus{
   color: #d2f608;
-}
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

@@ -25,7 +25,8 @@ import ProductCreate from './pages/admin/product/ProductCreate';
 import ProductUpdate from './pages/admin/product/ProductUpdate';
 import AllProducts from './pages/admin/product/AllProduct';
 import Product from './pages/Product';
-
+import CategoryHome from './pages/category/CategoryHome';
+import SubHome from "./pages/sub/SubHome"
 
 
 import {auth} from './pages/auth/firebase';
@@ -201,6 +202,9 @@ const App = ()=> {
         }
       />
       <Route  path="/product/:slug" element ={<Product/>} />
+      <Route  path="/category/:slug" element ={<CategoryHome/>} />
+      <Route  path="/sub/:slug" element ={<SubHome/>} />
+      
     </Routes>
     </>
     

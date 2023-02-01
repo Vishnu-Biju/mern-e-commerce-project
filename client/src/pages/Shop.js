@@ -60,6 +60,7 @@ const Shop = () => {
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
+    setCategoryIds([]);
     setPrice(value);
     setTimeout(() => {
       setOk(!ok);

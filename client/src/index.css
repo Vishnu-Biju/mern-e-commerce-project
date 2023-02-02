@@ -58,7 +58,20 @@ code {
   padding-top: 80px;
   color: white;
 }
-
+.SEARCH {
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+.SEARCH1 {
+  font-weight: 600;
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  background-color: #000000;
+  width: 100%;
+  padding: 45px;
+}
 
 #main{
   display: flex;

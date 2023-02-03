@@ -34,7 +34,7 @@ const Cart = () => {
           <td scope="col">Image</td>
           <td scope="col">Title</td>
           <td scope="col">Price</td>
-          <th scope="col">Brand</th>
+          <td scope="col">Brand</td>
           <td scope="col">Color</td>
           <td scope="col">Count</td>
           <td scope="col">Shipping</td>

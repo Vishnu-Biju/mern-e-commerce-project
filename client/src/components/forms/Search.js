@@ -23,12 +23,12 @@ const Search = () => {
   };
 
   return (
-    <form id="searchbar" className="form-inline my-2 my-lg-2" onSubmit={handleSubmit}>
+    <form id="" onSubmit={handleSubmit}>
       <input
         onChange={handleChange}
         type="search"
         value={text}
-        className="form-control  "
+        className="search"
         placeholder="Search"
       />
       <SearchOutlined onClick={handleSubmit} style={{ cursor: "pointer" ,paddingTop:"10px"}} />

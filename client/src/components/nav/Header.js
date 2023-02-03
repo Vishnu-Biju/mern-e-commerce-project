@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Menu } from "antd";
+import Badge from '@mui/material/Badge';
 import {
   AppstoreOutlined,
   SettingOutlined,
@@ -7,6 +8,7 @@ import {
   UserOutlined,
   UserAddOutlined,
   ShoppingOutlined,
+  ShoppingCartOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
@@ -24,7 +26,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   let dispatch = useDispatch();
-  let { user } = useSelector((state) => ({ ...state }));
+  let { user, cart } = useSelector((state) => ({ ...state }));
 
   const handleClick = (e) => {
     setCurrent(e.key);
@@ -64,6 +66,20 @@ const Header = () => {
           <Link to="/shop">Shop </Link>
           
         </Item>
+
+        <Item style={{  color: "#088178", backgroundColor: "#f7f7f7" ,fontWeight:"700",fontSize:"16px"}} 
+         key="cart" icon={<ShoppingCartOutlined />}>
+        <Link to="/cart">
+        
+          <Badge 
+           anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+           badgeContent={cart.length} color="secondary" overlap="circular">Cart
+          </Badge>
+        </Link>
+      </Item>
 
      
       {user &&

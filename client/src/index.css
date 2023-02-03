@@ -53,6 +53,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.MuiBadge-root{
+  margin-left: 0px;
+} 
 
 #hero{
   padding-top: 80px;

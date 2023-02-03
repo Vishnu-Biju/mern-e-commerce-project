@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Menu } from "antd";
-import Badge from '@mui/material/Badge';
+import Badge from "@mui/material/Badge";
 import {
   AppstoreOutlined,
   SettingOutlined,
@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-import Search from "../forms/Search"
+import Search from "../forms/Search";
 
 const { SubMenu, Item } = Menu;
 
@@ -51,76 +51,147 @@ const Header = () => {
 
   return (
     <Menu
-      style={{display:"inline-block",  backgroundColor: "#f7f7f7", color: "black",position:"fixed",width:"100%" ,paddingTop:"10px",overFlow:"hidden"}}
+      style={{
+        display: "inline-block",
+        backgroundColor: "#f7f7f7",
+        color: "black",
+        position: "fixed",
+        width: "100%",
+        paddingTop: "10px",
+        overFlow: "hidden",
+      }}
       onClick={handleClick}
       mode="horizontal"
       selectedKeys={[current]}
     >
-      <Item  style={{  color: "#088178", backgroundColor: "#f7f7f7" ,fontWeight:"700",fontSize:"16px"}} 
-      key="home" icon={<AppstoreOutlined />}>
+      <Item
+        style={{
+          color: "#088178",
+          backgroundColor: "#f7f7f7",
+          fontWeight: "700",
+          fontSize: "16px",
+        }}
+        key="home"
+        icon={<AppstoreOutlined />}
+      >
         <Link to="/">Home </Link>
-        
       </Item>
-        <Item  style={{  color: "#088178", backgroundColor: "#f7f7f7" ,fontWeight:"700",fontSize:"16px"}} 
-        key="shop" icon={<ShoppingOutlined />}>
-          <Link to="/shop">Shop </Link>
-          
-        </Item>
 
-        <Item style={{  color: "#088178", backgroundColor: "#f7f7f7" ,fontWeight:"700",fontSize:"16px"}} 
-         key="cart" icon={<ShoppingCartOutlined />}>
-        <Link to="/cart">
-        
-          <Badge 
-           anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
+
+
+
+      {user && (
+        <SubMenu
+          key="submenu"
+          style={{
+            color: "#088178",
+            float: "right",
+            fontWeight: "700",
+            fontSize: "16px",
           }}
-           badgeContent={cart.length} color="secondary" overlap="circular">Cart
+          icon={<SettingOutlined />}
+          title={user.email && user.email.split("@")[0]}
+        >
+          {user && user.role === "subscriber" && (
+            <Item
+              key="setting:1"
+              style={{
+                color: "#088178",
+                backgroundColor: "#f7f7f7",
+                fontWeight: "700",
+                fontSize: "16px",
+                marginTop: "50px",
+              }}
+            >
+              <Link to="/user/history">Dashboard</Link>
+            </Item>
+          )}
+
+          {user && user.role === "admin" && (
+            <Item
+              key="setting:1"
+              style={{
+                color: "#088178",
+                backgroundColor: "#f7f7f7",
+                fontWeight: "700",
+                fontSize: "16px",
+              }}
+            >
+              <Link to="/admin/dashboard">Dashboard</Link>
+            </Item>
+          )}
+
+          <Item
+            icon={<LogoutOutlined />}
+            onClick={logout}
+            style={{
+              color: "#088178",
+              backgroundColor: "#f7f7f7",
+              fontWeight: "700",
+              fontSize: "16px",
+            }}
+          >
+            Logout
+          </Item>
+        </SubMenu>
+      )}
+
+
+
+      <Item
+        style={{
+          color: "#088178",
+          backgroundColor: "#f7f7f7",
+          fontWeight: "700",
+          fontSize: "16px",
+          
+        }}
+        key="shop"
+        icon={<ShoppingOutlined />}
+      >
+        <Link to="/shop">Shop </Link>
+      </Item>
+       
+
+      <Item
+        style={{
+          color: "#088178",
+          backgroundColor: "#f7f7f7",
+          fontWeight: "700",
+          fontSize: "16px",
+          float: "right",
+        }}
+        key="cart"
+        icon={<ShoppingCartOutlined />}
+      >
+        <Link to="/cart">
+          <Badge
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            badgeContent={cart.length}
+            color="secondary"
+            overlap="circular"
+          >
+            Cart
           </Badge>
         </Link>
       </Item>
-
-     
-      {user &&
-        <SubMenu
-        key="submenu"
-        style={{  color: "#088178",float: "right" ,fontWeight:"700",fontSize:"16px" }}
-        icon={<SettingOutlined />}
-        title={user.email && user.email.split('@')[0]}
+      <item  key="search" >
+        
+      
+      </item>
+      
+      <Item
+        style={{
+          float: "right",
+        }}
+        key="shop"
+        
       >
-        {
-        user && user.role ==='subscriber' &&
-        <Item
-        key="setting:1"
-          style={{  color: "#088178", backgroundColor: "#f7f7f7" ,fontWeight:"700",fontSize:"16px",marginTop: "50px" }}>
-          <Link to="/user/history">Dashboard</Link>
-        </Item>
-       }
-
-        {
-        user && user.role ==='admin' &&
-        <Item
-        key="setting:1"
-          style={{  color: "#088178", backgroundColor: "#f7f7f7" ,fontWeight:"700",fontSize:"16px" }}>
-          <Link to="/admin/dashboard">Dashboard</Link>
-        </Item>
-       }
-     
-        <Item
-          icon={<LogoutOutlined />}
-          onClick={logout}
-          style={{  color: "#088178", backgroundColor: "#f7f7f7",fontWeight:"700",fontSize:"16px"  }}
-        >
-          Logout
-        </Item>
-      </SubMenu>
-      }
-      
-      
-      <span key="search" className="col-sm-0" style={{ float: "right"}} >
-          <Search/>
-        </span>
+        <Search />
+      </Item>
 
       {!user && (
         <Item
@@ -137,7 +208,6 @@ const Header = () => {
           <Link to="/Login">Login</Link>
         </Item>
       )}
-     
     </Menu>
   );
 };

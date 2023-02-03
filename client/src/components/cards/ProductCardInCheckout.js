@@ -94,7 +94,7 @@ const ProductCardInCheckout = ({ p }) => {
     <tbody>
       <tr>
         <td>
-          <div style={{ width: "250px", height: "auto" }}>
+          <div style={{ width: "130px", height: "auto" }}>
             {p.images.length ? (
               <ModalImage small={p.images[0].url} large={p.images[0].url} />
             ) : (

@@ -803,7 +803,7 @@ min-height: 150px;
 
 }
 
-#cart table td:nth-child(5) select{
+#cart table td:nth-child(5) select,input{
   width: 80px;
   padding: 10px 10px 10px 10px;
   text-align: center;

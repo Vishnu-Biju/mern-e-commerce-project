@@ -42,11 +42,12 @@ const Login = () => {
   let dispatch = useDispatch();
 
   const roleBasedRedirect = (res) => {
-    const storedValue = localStorage.getItem('RatingModalRedirect');
+    const storedValue = localStorage.getItem('cartRedirect'||'RatingModalRedirect' );
     // check if there is an intended redirect available
     if (storedValue) {
       navigate(storedValue);
       localStorage.removeItem('RatingModalRedirect');
+      localStorage.removeItem('cartRedirect');
     } else {
     if(res.data.role === "admin"){
       navigate("/admin/dashboard");

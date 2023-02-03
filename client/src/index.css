@@ -28,6 +28,7 @@ body {
   position: fixed;
   z-index: 9999;
   margin-top: 0px;
+ 
   
 }
 
@@ -651,6 +652,7 @@ min-height: 150px;
  
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
 }
 #headers{
   padding: 50px;
@@ -690,6 +692,12 @@ min-height: 150px;
  
 }
 
+.Row5{
+  padding-top: 50px;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
 .slider img{
   height: 500px;
   object-fit: cover;
@@ -758,4 +766,68 @@ min-height: 150px;
 .Row4{
   display: block;
 
+}
+#searchbar{
+  display: flex;
+  overflow: hidden;
+}
+
+
+/* cart page*/
+#cart table{
+  margin-top: 35px;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  white-space: nowrap;
+}
+
+#cart table img{
+  width: 70px;
+}
+
+#cart table td:nth-child(1),
+#cart table td:nth-child(2),
+#cart table td:nth-child(3),
+#cart table td:nth-child(4),
+#cart table td:nth-child(5),
+#cart table td:nth-child(6),
+#cart table td:nth-child(7),
+#cart table td:nth-child(8)
+{
+  width: 250px;
+  height: 80px;
+  text-align: center;
+
+}
+
+#cart table td:nth-child(5) input{
+  width: 70px;
+  padding: 10px 5px 18px 10px;
+}
+
+#cart table thead{
+  border:1px solid #e2e9e1;
+  border-left: none;
+  border-right: none;
+}
+
+#cart table thead td{
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 18px 0;
+}
+
+#cart table tbody tr td{
+  padding-top: 15px;
+}
+#cart table tbody td{
+  font-size: 13px;
+}
+
+@media (max-width:1400px) {
+  #cart{
+    overflow-x: auto;
+  }
 }

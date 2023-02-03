@@ -28,7 +28,7 @@ const Search = () => {
         onChange={handleChange}
         type="search"
         value={text}
-        className="form-control mr-sm-2 "
+        className="form-control  "
         placeholder="Search"
       />
       <SearchOutlined onClick={handleSubmit} style={{ cursor: "pointer" ,paddingTop:"10px"}} />

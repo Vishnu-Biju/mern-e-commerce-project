@@ -51,7 +51,7 @@ const Header = () => {
 
   return (
     <Menu
-      style={{display:"inline-block",  backgroundColor: "#f7f7f7", color: "black",position:"fixed",width:"100%" ,paddingTop:"10px"}}
+      style={{display:"inline-block",  backgroundColor: "#f7f7f7", color: "black",position:"fixed",width:"100%" ,paddingTop:"10px",overFlow:"hidden"}}
       onClick={handleClick}
       mode="horizontal"
       selectedKeys={[current]}
@@ -118,7 +118,7 @@ const Header = () => {
       }
       
       
-      <span key="search" style={{ float: "right"}} >
+      <span key="search" className="col-sm-0" style={{ float: "right"}} >
           <Search/>
         </span>
 

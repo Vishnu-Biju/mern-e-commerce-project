@@ -32,6 +32,7 @@ import CategoryHome from './pages/category/CategoryHome';
 import SubHome from "./pages/sub/SubHome";
 import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 
 
 
@@ -213,6 +214,7 @@ const App = ()=> {
       <Route  path="/sub/:slug" element ={<SubHome/>} />
       <Route  path="/shop" element ={<Shop/>} />
       <Route  path="/cart" element ={<Cart/>} />
+      <Route  path="/checkout" element ={<Checkout/>} />
       
     </Routes>
     </>

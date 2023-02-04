@@ -12,7 +12,7 @@ const { Meta } = Card;
 const ProductCard = ({ product }) => {
   const [tooltip, setTooltip] = useState("Click to add");
 
-    // redux
+  // redux
   const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
 
@@ -35,15 +35,19 @@ const ProductCard = ({ product }) => {
       // save to local storage
       console.log("unique", unique);
       localStorage.setItem("cart", JSON.stringify(unique));
-       // show tooltip
-       setTooltip("Added");
+      // show tooltip
+      setTooltip("Added");
 
-        // add to reeux state
+      // add to redux state
       dispatch({
         type: "ADD_TO_CART",
         payload: unique,
       });
-
+      // show cart items in side drawer
+      dispatch({
+        type: "SET_VISIBLE",
+        payload: true,
+      });
     }
   };
   // destructure

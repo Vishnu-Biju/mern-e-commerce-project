@@ -49,7 +49,11 @@ const SingleProduct = ({ product, onStarClick, star }) => {
             type: "ADD_TO_CART",
             payload: unique,
           });
-    
+          // add to redux state
+          dispatch({
+            type: "SET_VISIBLE",
+            payload: true,
+          });
         }
       };
 

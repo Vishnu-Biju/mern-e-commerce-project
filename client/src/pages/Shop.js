@@ -20,7 +20,7 @@ const { SubMenu, ItemGroup } = Menu;
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [price, setPrice] = useState([0, 0]);
+  const [price, setPrice] = useState([0, 4000]);
   const [ok, setOk] = useState(false);
   const [categories, setCategories] = useState([]);
   const [categoryIds, setCategoryIds] = useState([]);
@@ -318,7 +318,7 @@ const Shop = () => {
           <h6 className="SEARCH">SEARCH/FILTER BY</h6>
           <hr />
 
-          <Menu mode="inline">
+          <Menu mode="inline"  defaultOpenKeys={["1"]}>
             {/* price */}
             <SubMenu
               key="1"
@@ -336,6 +336,7 @@ const Shop = () => {
                   value={price}
                   onChange={handleSlider}
                   max="4999"
+                  
                 />
               </div>
             </SubMenu>

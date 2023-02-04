@@ -187,7 +187,7 @@ const Header = () => {
         style={{
           float: "right",
         }}
-        key="shop"
+        key="search"
         
       >
         <Search />

@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { useNavigate} from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 import ProductCardInCheckout from "../components/cards/ProductCardInCheckout";
+import { userCart } from "../functions/user";
 
 const Cart = () => {
   const { cart, user } = useSelector((state) => ({ ...state }));
@@ -10,6 +11,7 @@ const Cart = () => {
  
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const getTotal = () => {
     return cart.reduce((currentValue, nextValue) => {
@@ -18,14 +20,27 @@ const Cart = () => {
   };
 
   const saveOrderToDb = () => {
-    //
+    // console.log("cart", JSON.stringify(cart, null, 4));
+    userCart(cart, user.token)
+      .then((res) => {
+        console.log("CART POST RES", res);
+        if (res.data.ok) navigate("/checkout");
+      })
+      .catch((err) => console.log("cart save err", err));
   };
 
   const RedirectToCart = () => {
-    localStorage.setItem('cartRedirect', `/cart`);
-    navigate("/login");
+   
+    navigate('/login', {
+      state: {
+        previousUrl: '/cart',
+      }
+      
+    })
     
   };
+
+
 
   const showCartItems = () => (
     <table style={{width:"100%" }}>
@@ -53,7 +68,7 @@ const Cart = () => {
     <div className="container-fluid p-0">
       <div className="Row5 pt-5 p-3 col-md-12" style={{  color: "Black", backgroundColor: "white"}}>
         <div className="col-lg-12 pt-5" style={{fontWeight:"400"}}>
-          <h4 style={{textAlign:"center" ,fontWeight:"600",color:"red"}}>CART - {cart.length} Products</h4>
+          <h4 style={{textAlign:"center" ,fontWeight:"600",color:"#030c3e"}}>CART - {cart.length} Products</h4>
 
           {!cart.length ? (
             <p>

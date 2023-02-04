@@ -6,56 +6,71 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import app from "./firebase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {createOrUpdateUser} from "../../functions/auth";
-
-
+import { createOrUpdateUser } from "../../functions/auth";
 
 const Login = () => {
   const auth = getAuth(app);
   const navigate = useNavigate();
+  const location = useLocation();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const provider = new GoogleAuthProvider();
 
-
   const { user } = useSelector((state) => ({ ...state }));
- 
-
-
-
-
-   useEffect(() => {
-     if (user && user.token) ;
-   }, [user]);
-
-  const NavToRegister = () => {
-    // 👇️ navigate to /contacts
-    navigate("/register");
-  };
 
   let dispatch = useDispatch();
 
+     useEffect(() => {
+      if (location?.state?.previousUrl) {
+       return;
+      } else{
+        if (user && user.token)  navigate('/') ;
+      } 
+   }, [user,navigate]);
+
+  const NavToRegister = () => {
+    // navigate to /contacts
+    navigate("/register");
+  };
+
   const roleBasedRedirect = (res) => {
-    const storedValue = localStorage.getItem('cartRedirect'||'RatingModalRedirect' );
-    // check if there is an intended redirect available
-    if (storedValue) {
-      navigate(storedValue);
-      localStorage.removeItem('RatingModalRedirect');
-      localStorage.removeItem('cartRedirect');
+    if (location?.state?.previousUrl) {
+      navigate(location.state.previousUrl);
     } else {
-    if(res.data.role === "admin"){
-      navigate("/admin/dashboard");
-    }else {
-      navigate("/user/history");
+      if (res.data.role === "admin") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/user/history");
+      }
     }
-  }
- }
+  };
+
+  //  useEffect(() => {
+  //    if (user && user.token) ;
+  //  }, [user]);
+
+  //   const NavToRegister = () => {
+  //    // navigate to /contacts
+  //      navigate("/register");
+  //  };
+
+  // let dispatch = useDispatch();
+
+  //  const roleBasedRedirect = (res) => {
+
+  //    if(res.data.role === "admin"){
+  //      navigate("/admin/dashboard");
+  //    }else {
+  //      navigate("/user/history");
+  //    }
+  //  }
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -66,74 +81,58 @@ const Login = () => {
       const idTokenResult = await user.getIdTokenResult();
 
       createOrUpdateUser(idTokenResult.token)
-      .then((res) => {
-        
-        dispatch({
-          type: "LOGGED_IN_USER",
-          payload: {
-            name: res.data.name,
-            email: res.data.email,
-            token: idTokenResult.token,
-            role:res.data.role,
-            _id:res.data._id,
-          },
-        });
-        roleBasedRedirect(res);
-      })
-      .catch(err => console.log(err));
-      
-        
+        .then((res) => {
+          dispatch({
+            type: "LOGGED_IN_USER",
+            payload: {
+              name: res.data.name,
+              email: res.data.email,
+              token: idTokenResult.token,
+              role: res.data.role,
+              _id: res.data._id,
+            },
+          });
+          roleBasedRedirect(res);
+        })
+        .catch((err) => console.log(err));
 
-    
       // ...
     } catch (error) {
-      
       toast.warning("check your password and email !");
       // const errorMessage = error.message;
       setLoading(false);
     }
   };
 
-
-
-
-
-
   const googleLogin = async () => {
     const result = await signInWithPopup(auth, provider);
-    
 
     const { user } = result;
     const idTokenResult = await user.getIdTokenResult();
 
     createOrUpdateUser(idTokenResult.token)
       .then((res) => {
-       
         dispatch({
           type: "LOGGED_IN_USER",
           payload: {
             name: res.data.name,
             email: res.data.email,
             token: idTokenResult.token,
-            role:res.data.role,
-            _id:res.data._id,
+            role: res.data.role,
+            _id: res.data._id,
           },
         });
         roleBasedRedirect(res);
       })
-      .catch(err => console.log(err));
-      //navigate("/");
-      
+      .catch((err) => console.log(err));
+    //navigate("/");
+
     // The signed-in user info.
 
     //    // ...
-    }
-  
-
-  
+  };
 
   return (
-    
     <div id="main">
       {loading ? <h4> Loading...</h4> : <h4> LOGIN </h4>}
       <div id="fields">

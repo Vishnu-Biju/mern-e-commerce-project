@@ -16,8 +16,12 @@ const RatingModal = ({ children }) => {
     if(user && user.token){
       setModalVisible(true);
     } else {
-     navigate('/login');
-     localStorage.setItem('RatingModalRedirect', `/product/${slug}`);
+      navigate('/login', {
+        state: {
+          previousUrl: `/product/${slug}`,
+        }
+        
+      })
     }
   };
 

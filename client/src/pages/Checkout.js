@@ -41,9 +41,10 @@ const Checkout = () => {
   };
 
   return (
-    <div className="Row5 p-5">
-      <div className="col">
-        <h4>Delivery Address</h4>
+    
+    <div className="Row5 p-5" style={{backgroundColor:"white"}}>
+      <div className="col" style={{backgroundColor:"off-whight", padding: "10px",}}>
+        <h4 style={{backgroundColor:"black",padding:"30px",borderRadius:"10px"}}>Delivery Address</h4>
         <br />
         <br />
          Adress
@@ -51,13 +52,15 @@ const Checkout = () => {
           Save
         </button>
         <hr />
-        <h4>Got Coupon?</h4>
+        <h4  style={{backgroundColor:"black",padding:"30px",borderRadius:"10px"}}>Got Coupon?</h4>
         <br />
+        
         coupon input and apply button
+        <hr/>
       </div>
 
       <div className="col">
-        <h4>Order Summary</h4>
+        <h4  style={{backgroundColor:"black",padding:"30px",borderRadius:"10px"}}>Order Summary</h4>
         <hr />
         <p>Products {products.length}</p>
         <hr />
@@ -70,7 +73,7 @@ const Checkout = () => {
           </div>
         ))}
         <hr />
-        <p>Cart Total: {total}</p>
+        <p style={{fontWeight:"600" , fontSize:"20px"}}>Cart Total: {total}</p>
 
         <div className="Row">
           <div className="col">

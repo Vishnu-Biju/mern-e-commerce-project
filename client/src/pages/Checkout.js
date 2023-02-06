@@ -2,10 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { getUserCart, emptyUserCart, saveUserAddress } from "../functions/user";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const Checkout = () => {
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
+  const [address, setAddress] = useState("");
+  const [addressSaved, setAddressSaved] = useState(false);
 
   const dispatch = useDispatch();
   const { user } = useSelector((state) => ({ ...state }));
@@ -37,30 +41,40 @@ const Checkout = () => {
   };
 
   const saveAddressToDb = () => {
-    //
+    // console.log(address);
+    saveUserAddress(user.token, address).then((res) => {
+      if (res.data.ok) {
+        setAddressSaved(true);
+        toast.success("Address saved");
+      }
+    });
   };
-
   return (
-    
-    <div className="Row5 p-5" style={{backgroundColor:"white"}}>
-      <div className="col" style={{backgroundColor:"off-whight", padding: "10px",}}>
-        <h4 style={{backgroundColor:"black",padding:"30px",borderRadius:"10px"}}>Delivery Address</h4>
+    <div className="Row5 p-5" style={{ backgroundColor: "white" }}>
+      <div className="col-md-6">
+        <h4>Delivery Address</h4>
         <br />
         <br />
-         Adress
-        <button  style={{float:"right"}} className="btn btn-primary mt-2" onClick={saveAddressToDb}>
+        <ReactQuill theme="snow" value={address} onChange={setAddress} />
+        <button className="btn btn-primary mt-2" onClick={saveAddressToDb}>
           Save
         </button>
         <hr />
-        <h4  style={{backgroundColor:"black",padding:"30px",borderRadius:"10px"}}>Got Coupon?</h4>
+        <h4>Got Coupon?</h4>
         <br />
-        
         coupon input and apply button
-        <hr/>
       </div>
 
       <div className="col">
-        <h4  style={{backgroundColor:"black",padding:"30px",borderRadius:"10px"}}>Order Summary</h4>
+        <h4
+          style={{
+            backgroundColor: "black",
+            padding: "30px",
+            borderRadius: "10px",
+          }}
+        >
+          Order Summary
+        </h4>
         <hr />
         <p>Products {products.length}</p>
         <hr />
@@ -73,16 +87,23 @@ const Checkout = () => {
           </div>
         ))}
         <hr />
-        <p style={{fontWeight:"600" , fontSize:"20px"}}>Cart Total: {total}</p>
+        <p style={{ fontWeight: "600", fontSize: "20px" }}>
+          Cart Total: {total}
+        </p>
 
         <div className="Row">
           <div className="col">
-            <button className="btn btn-success">Place Order</button>
+            <button
+              disabled={!addressSaved || !products.length}
+              className="btn btn-success"
+            >
+              Place Order
+            </button>
           </div>
 
           <div className="col-md-6">
-            <button 
-             style={{float:"right"}}
+            <button
+              style={{ float: "right" }}
               disabled={!products.length}
               onClick={emptyCart}
               className="btn btn-danger"

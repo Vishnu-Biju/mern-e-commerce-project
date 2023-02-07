@@ -178,10 +178,6 @@ const Header = () => {
           </Badge>
         </Link>
       </Item>
-      <item  key="search" >
-        
-      
-      </item>
       
       <Item
         style={{

@@ -86,7 +86,7 @@ const ProductCreate = () => {
           <br />
           <br />
          
-          <div className="">
+          <div >
             <FileUpload
               values={values}
               setValues={setValues}

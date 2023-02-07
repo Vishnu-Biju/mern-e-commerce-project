@@ -27,6 +27,9 @@ import SubUpdate from './pages/admin/Sub/SubUpdate';
 import ProductCreate from './pages/admin/product/ProductCreate';
 import ProductUpdate from './pages/admin/product/ProductUpdate';
 import AllProducts from './pages/admin/product/AllProduct';
+import CreateCouponPage from './pages/admin/coupon/CreateCouponPage';
+import Payment from './pages/Payment';
+
 import Product from './pages/Product';
 import CategoryHome from './pages/category/CategoryHome';
 import SubHome from "./pages/sub/SubHome";
@@ -215,7 +218,17 @@ const App = ()=> {
       <Route  path="/shop" element ={<Shop/>} />
       <Route  path="/cart" element ={<Cart/>} />
       <Route  path="/checkout" element ={<Checkout/>} />
+
+      <Route
+        path="/admin/coupon"
+        element={
+          <AdminRoute>
+            <CreateCouponPage/>
+          </AdminRoute>
+        }
+      />
       
+      <Route  path="/payment" element ={<Payment/>} />
     </Routes>
     </>
     

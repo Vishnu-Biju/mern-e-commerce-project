@@ -12,6 +12,8 @@ import "react-quill/dist/quill.snow.css";
 import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
+  const { user } = useSelector((state) => ({ ...state }));
+  
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
   const [address, setAddress] = useState("");
@@ -24,10 +26,11 @@ const Checkout = () => {
   const [discountError, setDiscountError] = useState("");
 
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => ({ ...state }));
+  
   console.log("user--->",user.token); 
   useEffect(() => {
     //
+   
     getUserCart(user.token).then((res) => {
       console.log("user cart res", JSON.stringify(res.data, null, 4));
       setProducts(res.data.products);

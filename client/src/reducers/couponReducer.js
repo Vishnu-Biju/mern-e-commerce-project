@@ -1,6 +1,6 @@
-export const coupenReducer = (state = false, action) => {
+export const couponReducer = (state = false, action) => {
   switch (action.type) {
-    case "COUPEN_APPLIED":
+    case "COUPON_APPLIED":
       return action.payload;
     default:
       return state;

@@ -3,14 +3,14 @@ import { userReducer } from "./userReducer";
 import { searchReducer } from "./searchReducer";
 import { cartReducer } from "./cartReducer";
 import { drawerReducer } from "./drawerReducer";
-import { coupenReducer } from "./coupenReducer";
+import { couponReducer } from "./couponReducer";
 
 const rootReducer = combineReducers({
   user: userReducer,
   search: searchReducer,
   cart: cartReducer,
   drawer: drawerReducer,
-  coupen: coupenReducer,
+  coupon: couponReducer,
 });
 
 export default rootReducer;

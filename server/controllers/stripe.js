@@ -6,9 +6,10 @@ const coupon = require("../models/coupon");
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
 exports.createPaymentIntent = async (req, res) => {
-  // console.log(req.body);
+   console.log("BODY--->",req.body);
   const { couponApplied } = req.body;
-
+  console.log("----->couponApplied",couponApplied);
+  
   // later apply coupon
   // later calculate price
 
@@ -41,4 +42,3 @@ exports.createPaymentIntent = async (req, res) => {
     payable: finalAmount,
   });
 };
-

@@ -20,7 +20,7 @@ const { SubMenu, ItemGroup } = Menu;
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [price, setPrice] = useState([0]);
+  const [price, setPrice] = useState([0,0]);
   const [ok, setOk] = useState(false);
   const [categories, setCategories] = useState([]);
   const [categoryIds, setCategoryIds] = useState([]);
@@ -221,6 +221,7 @@ const Shop = () => {
   const showBrands = () =>
     brands.map((b) => (
       <Radio
+        key={b}
         value={b}
         name={b}
         checked={b === brand}
@@ -250,6 +251,7 @@ const Shop = () => {
   const showColors = () =>
     colors.map((c) => (
       <Radio
+        key={c}
         value={c}
         name={c}
         checked={c === color}

@@ -23,7 +23,7 @@ const orderSchema = new mongoose.Schema(
         "processing",
         "Dispatched",
         "Cancelled",
-        "Completed",
+        "Delivered",
       ],
     },
     orderdBy: { type: ObjectId, ref: "User" },

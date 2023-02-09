@@ -793,7 +793,12 @@ min-height: 150px;
   align-items: center;
 
 }
-#cart table td:nth-child(1),
+#cart table td:nth-child(1){
+  width: 350px;
+  height: 80px;
+  text-align: center;
+  align-items: center;
+}
 #cart table td:nth-child(3),
 #cart table td:nth-child(4),
 #cart table td:nth-child(5),

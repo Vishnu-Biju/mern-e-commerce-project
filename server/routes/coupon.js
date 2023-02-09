@@ -13,3 +13,4 @@ router.get("/coupons", list);
 router.delete("/coupon/:couponId", authCheck, adminCheck, remove);
 
 module.exports = router;
+

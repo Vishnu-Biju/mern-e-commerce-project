@@ -17,6 +17,7 @@ const CategoryList = () => {
   const showCategories = () =>
     categories.map((c) => (
       <Link
+        key={c._id}
         style={{ backgroundColor: "black", color: "white" }}
         to={`/category/${c.slug}`}
         className="col btn btn-outlined btn-lg btn-block btn-raised m-3"

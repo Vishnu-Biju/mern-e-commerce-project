@@ -32,9 +32,9 @@ const SideDrawer = () => {
       {cart.map((p) => (
         <div key={p._id} className="row">
           <div className="col ">
-            {p.images[0] ? (
+          {p?.images[0]? (
               <>
-                <img src={p.images[0].url} style={imageStyle} />
+                <img src={p.images[0]?.url} style={imageStyle} />
                 <p className="text-center bg-secondary text-light">
                   {p.title} x {p.count}
                 </p>

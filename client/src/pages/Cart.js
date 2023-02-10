@@ -1,17 +1,16 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { useNavigate, useLocation} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import ProductCardInCheckout from "../components/cards/ProductCardInCheckout";
 import { userCart } from "../functions/user";
 
 const Cart = () => {
   const { cart, user } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
- 
 
   const navigate = useNavigate();
-  const location = useLocation();
+
 
   const getTotal = () => {
     return cart.reduce((currentValue, nextValue) => {
@@ -30,22 +29,32 @@ const Cart = () => {
   };
 
   const RedirectToCart = () => {
-   
-    navigate('/login', {
+    navigate("/login", {
       state: {
-        previousUrl: '/cart',
-      }
-      
-    })
-    
+        previousUrl: "/cart",
+      },
+    });
+  };
+
+  const saveCashOrderToDb = () => {
+    // console.log("cart", JSON.stringify(cart, null, 4));
+    dispatch({
+      type: "COD",
+      payload: true,
+    });
+    userCart(cart, user.token)
+      .then((res) => {
+        console.log("CART POST RES", res);
+        if (res.data.ok) navigate("/checkout");
+      })
+      .catch((err) => console.log("cart save err", err));
   };
 
 
-
   const showCartItems = () => (
-    <table style={{width:"100%" }}>
-      <thead >
-        <tr >
+    <table style={{ width: "100%" }}>
+      <thead>
+        <tr>
           <td scope="col">Image</td>
           <td scope="col">Title</td>
           <td scope="col">Price</td>
@@ -63,12 +72,18 @@ const Cart = () => {
     </table>
   );
 
-
   return (
     <div className="container-fluid p-0">
-      <div className="Row5 pt-5 p-3 col-md-12" style={{  color: "Black", backgroundColor: "white"}}>
-        <div className="col-lg-12 pt-5" style={{fontWeight:"400"}}>
-          <h4 style={{textAlign:"center" ,fontWeight:"600",color:"#030c3e"}}>CART - {cart.length} Products</h4>
+      <div
+        className="Row5 pt-5 p-3 col-md-12"
+        style={{ color: "Black", backgroundColor: "white" }}
+      >
+        <div className="col-lg-12 pt-5" style={{ fontWeight: "400" }}>
+          <h4
+            style={{ textAlign: "center", fontWeight: "600", color: "#030c3e" }}
+          >
+            CART - {cart.length} Products
+          </h4>
 
           {!cart.length ? (
             <p>
@@ -76,9 +91,8 @@ const Cart = () => {
             </p>
           ) : (
             <div id="cart" class="section-p1">
-             { showCartItems()}
+              {showCartItems()}
             </div>
-            
           )}
         </div>
         <div className="col-lg-12 col-md-12 pt-5 p-3">
@@ -96,17 +110,29 @@ const Cart = () => {
           Total: <b>${getTotal()}</b>
           <hr />
           {user ? (
-            <button 
-            onClick={saveOrderToDb}
-            className="btn btn-sm btn-primary mt-2"
-            disabled={!cart.length}
-            > 
-             Proceed to Checkout
-            </button>
+            <>
+              <button
+                onClick={saveOrderToDb}
+                className="btn btn-sm btn-success mt-2 mb-3 "
+                disabled={!cart.length}
+              >
+                Proceed to Checkout
+              </button>
+              <br />
+
+              <button
+                onClick={saveCashOrderToDb}
+                className="btn btn-sm btn-primary mt-2"
+                disabled={!cart.length}
+              >
+                Pay Cash on Delivery
+              </button>
+            </>
           ) : (
             <button
-            onClick={RedirectToCart}
-             className="btn btn-sm btn-primary mt-2">
+              onClick={RedirectToCart}
+              className="btn btn-sm btn-primary mt-2"
+            >
               Login to Checkout
             </button>
           )}

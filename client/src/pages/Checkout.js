@@ -6,14 +6,16 @@ import {
   emptyUserCart,
   saveUserAddress,
   applyCoupon,
+  createCashOrderForUser,
 } from "../functions/user";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
-  const { user } = useSelector((state) => ({ ...state }));
-  
+  const { user, COD } = useSelector((state) => ({ ...state }));
+  const couponTrueOrFalse = useSelector((state) => state.coupon);
+
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
   const [address, setAddress] = useState("");
@@ -26,18 +28,18 @@ const Checkout = () => {
   const [discountError, setDiscountError] = useState("");
 
   const dispatch = useDispatch();
-  
-  console.log("user--->",user.token); 
+
+  console.log("user--->", user.token);
   useEffect(() => {
     //
-   if(user?.token){
-    getUserCart(user.token).then((res) => {
-      console.log("user cart res", JSON.stringify(res.data, null, 4));
-      setProducts(res.data.products);
-      setTotal(res.data.cartTotal);
-    });}
+    if (user?.token) {
+      getUserCart(user.token).then((res) => {
+        console.log("user cart res", JSON.stringify(res.data, null, 4));
+        setProducts(res.data.products);
+        setTotal(res.data.cartTotal);
+      });
+    }
   }, [user?.token]);
-  
 
   const emptyCart = () => {
     // remove from local storage
@@ -136,6 +138,39 @@ const Checkout = () => {
       </button>
     </>
   );
+
+  const createCashOrder = () => {
+    createCashOrderForUser(user.token, COD, couponTrueOrFalse).then((res) => {
+      console.log("USER CASH ORDER CREATED RES ", res);
+      // empty cart form redux, local Storage, reset coupon, reset COD, redirect
+      if (res.data.ok) {
+        // empty local storage
+        if (typeof window !== "undefined") localStorage.removeItem("cart");
+        // empty redux cart
+        dispatch({
+          type: "ADD_TO_CART",
+          payload: [],
+        });
+        // empty redux coupon
+        dispatch({
+          type: "COUPON_APPLIED",
+          payload: false,
+        });
+        // empty redux COD
+        dispatch({
+          type: "COD",
+          payload: false,
+        });
+        // mepty cart from backend
+        emptyUserCart(user.token);
+        // redirect
+        setTimeout(() => {
+           navigate("/user/history");
+        }, 1000);
+      }
+    });
+  };
+
   return (
     <div className="Row5 p-5" style={{ backgroundColor: "white" }}>
       <div className="col">
@@ -166,13 +201,18 @@ const Checkout = () => {
         <br />
         {showApplyCoupon()}
         <br />
-        {discountError && <p className="p-3"
-             style={{
+        {discountError && (
+          <p
+            className="p-3"
+            style={{
               fontWeight: "600",
               fontSize: "20px",
               color: "#D10000",
             }}
-        >{discountError}...</p>}
+          >
+            {discountError}...
+          </p>
+        )}
       </div>
 
       <div className="col">
@@ -187,7 +227,9 @@ const Checkout = () => {
           Order Summary
         </h4>
         <hr />
-        <p style={{ fontWeight: "600", fontSize: "20px" }}>Products {products.length}</p>
+        <p style={{ fontWeight: "600", fontSize: "20px" }}>
+          Products {products.length}
+        </p>
         <hr />
         {showProductSummary()}
         <hr />
@@ -213,13 +255,23 @@ const Checkout = () => {
 
         <div className="Row">
           <div className="col">
-            <button
-              disabled={!addressSaved || !products.length}
-              className="btn btn-success"
-              onClick={() => navigate("/payment")}
-            >
-              Place Order
-            </button>
+            {COD ? (
+              <button
+                disabled={!addressSaved || !products.length}
+                className="btn btn-success"
+                onClick={createCashOrder}
+              >
+                Place Order
+              </button>
+            ) : (
+              <button
+                disabled={!addressSaved || !products.length}
+                className="btn btn-success"
+                onClick={() => navigate("/payment")}
+              >
+                Place Order
+              </button>
+            )}
           </div>
 
           <div className="col">

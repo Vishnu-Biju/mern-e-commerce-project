@@ -154,6 +154,19 @@ code {
   border-radius: 5px;
   color: #ffffff;
 }
+#main select{
+  margin-top: 35px;
+  min-width: 250px;
+  max-width: 50%;
+  display: flex;
+  border: 1px solid #ffffff;
+	background-color: #191919;
+  max-width: 40%;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  color: #ffffff;
+}
 #main input:focus{
   border: 1px solid #ffffff;
   background-color: #191919;

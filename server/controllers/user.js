@@ -211,6 +211,7 @@ exports.createCashOrder = async (req, res) => {
   } else {
     finalAmount = userCart.cartTotal * 100;
   }
+  
 
   let newOrder = await new Order({
     products: userCart.products,
@@ -219,7 +220,7 @@ exports.createCashOrder = async (req, res) => {
       amount: finalAmount,
       currency: "usd",
       status: "Cash On Delivery",
-      created: Date.now(),
+      created: Date.now(), 
       payment_method_types: ["cash"],
     },
     orderdBy: user._id,

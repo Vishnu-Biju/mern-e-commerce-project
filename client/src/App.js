@@ -1,11 +1,15 @@
-import React, {useEffect} from 'react';
+import React, { useEffect,useState, lazy, Suspense } from "react";
 import { Routes , Route} from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer} from 'react-toastify';
 
+import {auth} from './pages/auth/firebase';
+import { useDispatch } from 'react-redux';
+import {currentUser} from "./functions/auth";
+import  LoadingPage  from "./components/cards/LoadingPage";
 
 
-import Login from './pages/auth/Login';
+/* import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Home from './pages/Home';
 import Header from './components/nav/Header';
@@ -35,65 +39,91 @@ import CategoryHome from './pages/category/CategoryHome';
 import SubHome from "./pages/sub/SubHome";
 import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout";
+import Checkout from "./pages/Checkout" */;
 
 
+// using lazy
+const Login = lazy(() => import("./pages/auth/Login"));
+const Register = lazy(() => import("./pages/auth/Register"));
+const Home = lazy(() => import("./pages/Home"));
+const Header = lazy(() => import("./components/nav/Header"));
+const SideDrawer = lazy(() => import("./components/drawer/sideDrawer"));
 
-import {auth} from './pages/auth/firebase';
-import { useDispatch } from 'react-redux';
-import {currentUser} from "./functions/auth";
+const ChangePassword = lazy(() => import("./pages/auth/forgotPassword"));
+const History = lazy(() => import("./pages/user/History"));
+const UserRoute = lazy(() => import("./components/routes/UserRoute"));
+const AdminRoute = lazy(() => import("./components/routes/AdminRoute"));
+const Password = lazy(() => import("./pages/user/Password"));
+const AdminPassword = lazy(() => import("./pages/admin/Password"));
+const Wishlist = lazy(() => import("./pages/user/Wishlist"));
+const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
+const CategoryCreate = lazy(() => import("./pages/admin/category/CategoryCreate"));
+const CategoryUpdate = lazy(() => import("./pages/admin/category/CategoryUpdate"));
+const SubCreate = lazy(() => import("./pages/admin/Sub/SubCreate"));
+const SubUpdate = lazy(() => import("./pages/admin/Sub/SubUpdate"));
+const ProductCreate = lazy(() => import("./pages/admin/product/ProductCreate"));
+const AllProducts = lazy(() => import("./pages/admin/product/AllProduct"));
+const ProductUpdate = lazy(() => import("./pages/admin/product/ProductUpdate"));
+const Product = lazy(() => import("./pages/Product"));
+const CategoryHome = lazy(() => import("./pages/category/CategoryHome"));
+const SubHome = lazy(() => import("./pages/sub/SubHome"));
+const Shop = lazy(() => import("./pages/Shop"));
+const Cart = lazy(() => import("./pages/Cart"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const CreateCouponPage = lazy(() => import("./pages/admin/coupon/CreateCouponPage"));
+const Payment = lazy(() => import("./pages/Payment"));
+
+
 
 
 
 const App = ()=> {
  const dispatch = useDispatch()
+ const [loading, setLoading] = useState(true);
 
 
+/*  useEffect(() => {
+  setTimeout(() => setLoading(false), 3000);
+}, []); */
  //to check firebase auth state
- useEffect(()=> {
-
-  const unsubscribe =  auth.onAuthStateChanged(async (user)=> {
-    if(user) {
-      const idTokenResult = await user.getIdTokenResult();
-        console.log("user",user)
-        currentUser(idTokenResult.token)
-        .then((res) => {
-         
-          dispatch({
-            type: "LOGGED_IN_USER",
-            payload: {
-              name: res.data.name,
-              email: res.data.email,
-              token: idTokenResult.token,
-               role:res.data.role,
-              _id:res.data._id,
-            },
-           
-          });
-         
-        })
-        .catch(err => console.log(err));
-    }
-  } );
 
 
-  // const backGround = () => {
-  //   if(role === "true"){
-  //     backGround = "dark";
-  //   }else {
-  //     backGround = "light";
-  //   }
-  // };
-
+    // to check firebase auth state
+    useEffect(() => {
+      const unsubscribe = auth.onAuthStateChanged(async (user) => {
+        if (user) {
+          const idTokenResult = await user.getIdTokenResult();
+          // console.log("user", user);
   
-
+          currentUser(idTokenResult.token)
+            .then((res) => {
+              dispatch({
+                type: "LOGGED_IN_USER",
+                payload: {
+                  name: res.data.name,
+                  email: res.data.email,
+                  token: idTokenResult.token,
+                  role: res.data.role,
+                  _id: res.data._id,
+                },
+              });
+            })
+            .catch((err) => console.log(err));
+        }
+      });
 
   // clean up
   return() => unsubscribe();
  }, [dispatch]);
 
   return (  
-  <>
+  <Suspense
+  fallback={
+    <div className="col text-center p-5">
+      <LoadingPage />
+    </div>
+  }
+  >
  
     <Header/>
     <ToastContainer
@@ -230,7 +260,7 @@ const App = ()=> {
       
       <Route  path="/payment" element ={<Payment/>} />
     </Routes>
-    </>
+    </Suspense>
     
   );
 

@@ -7,8 +7,8 @@ import {auth} from './pages/auth/firebase';
 import { useDispatch } from 'react-redux';
 import {currentUser} from "./functions/auth";
 import  LoadingPage  from "./components/cards/LoadingPage";
-
-
+import { UserRoute } from "./components/routes/UserRoute";
+import { AdminRoute } from "./components/routes/AdminRoute";
 /* import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Home from './pages/Home';
@@ -50,9 +50,7 @@ const Header = lazy(() => import("./components/nav/Header"));
 const SideDrawer = lazy(() => import("./components/drawer/sideDrawer"));
 
 const ChangePassword = lazy(() => import("./pages/auth/forgotPassword"));
-const History = lazy(() => import("./pages/user/History"));
-const UserRoute = lazy(() => import("./components/routes/UserRoute"));
-const AdminRoute = lazy(() => import("./components/routes/AdminRoute"));
+const History = lazy(() => import('./pages/user/History'));
 const Password = lazy(() => import("./pages/user/Password"));
 const AdminPassword = lazy(() => import("./pages/admin/Password"));
 const Wishlist = lazy(() => import("./pages/user/Wishlist"));
